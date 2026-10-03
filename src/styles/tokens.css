@@ -1,0 +1,35 @@
+/* Barvy, typografie a rozestupy (GDD kap. 9). Kontrast textu ověřen pro WCAG AA:
+   ink/paper 13.8, ink-muted/paper 5.4, ink-muted/correct-tint 5.2,
+   stamp/sheet 10.4, correct/correct-tint 5.8. */
+
+:root {
+  --paper: #eef0eb;
+  --sheet: #ffffff;
+  --ink: #1b2330;
+  --ink-muted: #586272;
+  --rule: #c8cdd2;
+  --stamp: #4b2e83;
+  --correct: #17663f;
+  --correct-tint: #ddefe3;
+
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-text: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
+
+  --text-size: 1.0625rem; /* 17 px */
+  --text-leading: 1.55;
+  --measure: 70ch;
+  --page-width: 46rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  --radius: 6px;
+  --focus: 3px solid var(--stamp);
+  --touch: 44px;
+  --slot-gutter: 2.25rem;
+}

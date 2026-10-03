@@ -1,0 +1,913 @@
+/* ---------- Základ ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--stamp);
+  text-underline-offset: 0.15em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+/* Programově zaostřené nadpisy a cíle odkazů nejsou ovládací prvky. */
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-5);
+}
+
+.page-footer {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--rule);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.notice {
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--stamp);
+  border-radius: var(--radius);
+}
+
+.loading {
+  color: var(--ink-muted);
+}
+
+/* ---------- Tlačítka ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--stamp);
+}
+
+.btn--primary {
+  background: var(--stamp);
+  color: var(--sheet);
+}
+
+.btn--primary:hover {
+  background: #3d2570;
+}
+
+.btn--secondary {
+  background: var(--sheet);
+  color: var(--stamp);
+}
+
+.btn--secondary:hover {
+  background: #f3f0f8;
+}
+
+.btn[aria-disabled='true'] {
+  background: var(--sheet);
+  border-color: var(--rule);
+  color: var(--ink-muted);
+  cursor: not-allowed;
+}
+
+/* ---------- Domovská stránka ---------- */
+
+.home-header {
+  margin-bottom: var(--space-6);
+}
+
+.lead {
+  margin-top: var(--space-3);
+  max-width: var(--measure);
+  font-size: 1.125rem;
+}
+
+.quiz-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.tile {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+.tile h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.tile__desc {
+  margin-top: var(--space-2);
+  max-width: var(--measure);
+}
+
+.tile__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.tile__meta {
+  font-family: var(--font-display);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.tile--soon {
+  background: transparent;
+  border-style: dashed;
+  padding: var(--space-4) var(--space-5);
+}
+
+.tile--soon h2 {
+  font-size: 1.125rem;
+  color: var(--ink-muted);
+}
+
+.tile__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.tile__soon {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Hlavička kvízu ---------- */
+
+.quiz-header {
+  margin-bottom: var(--space-5);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.quiz-header__instructions {
+  margin-top: var(--space-3);
+  max-width: var(--measure);
+}
+
+.methodology {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.methodology summary {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--stamp);
+}
+
+.methodology p {
+  max-width: var(--measure);
+  margin-bottom: var(--space-3);
+  font-size: 1rem;
+}
+
+/* ---------- Osa a sloty ---------- */
+
+.reveal-hint {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--sheet);
+  border-left: 4px solid var(--stamp);
+  font-weight: 600;
+}
+
+.axis-label {
+  padding-left: var(--slot-gutter);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.axis-label--top {
+  margin-bottom: var(--space-2);
+}
+
+.axis-label--bottom {
+  margin-top: var(--space-2);
+}
+
+.slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Osa: tenká linka podél čísel slotů. */
+.slots::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--slot-gutter) / 2 - 1px);
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 2px;
+  background: var(--rule);
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: var(--slot-gutter) minmax(0, 1fr);
+  align-items: start;
+  margin-bottom: var(--space-3);
+}
+
+.slot:last-child {
+  margin-bottom: 0;
+}
+
+.slot__num {
+  position: relative;
+  justify-self: center;
+  margin-top: var(--space-4);
+  min-width: 1.75rem;
+  padding: 0.1rem 0;
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* ---------- Karta ---------- */
+
+.card {
+  position: relative;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  touch-action: manipulation;
+}
+
+.card--dragging {
+  z-index: 2;
+  border-color: var(--stamp);
+  box-shadow: 0 8px 24px rgb(27 35 48 / 0.18);
+}
+
+.card--locked {
+  background: var(--correct-tint);
+  border: 2px solid var(--correct);
+}
+
+.card__top {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'lead main moves';
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2) var(--space-3) var(--space-1);
+}
+
+.card--locked .card__top {
+  padding-left: var(--space-3);
+}
+
+.card__lead-col {
+  grid-area: lead;
+  display: flex;
+  align-items: flex-start;
+}
+
+.card__handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch);
+  height: var(--touch);
+  margin-top: -0.35rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: grab;
+  touch-action: none;
+}
+
+.card__handle:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.card--dragging .card__handle {
+  cursor: grabbing;
+}
+
+.card__check {
+  display: inline-flex;
+  color: var(--correct);
+  margin-top: 0.05rem;
+}
+
+.card__main {
+  grid-area: main;
+  min-width: 0;
+}
+
+.card__title {
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.card__status {
+  margin-top: var(--space-1);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--correct);
+}
+
+.card__oneliner {
+  margin-top: var(--space-2);
+  max-width: var(--measure);
+}
+
+.card__people {
+  margin-top: var(--space-2);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.card__people-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.card__people ul {
+  margin: var(--space-1) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card__people li + li {
+  margin-top: 0.15rem;
+}
+
+.card__role {
+  color: var(--ink-muted);
+}
+
+.card__moves {
+  grid-area: moves;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.move-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch);
+  height: var(--touch);
+  padding: 0;
+  border: 1px solid #8a93a0;
+  border-radius: var(--radius);
+  background: var(--sheet);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.move-btn:hover {
+  border-color: var(--stamp);
+  color: var(--stamp);
+}
+
+.move-btn[aria-disabled='true'] {
+  border-color: var(--rule);
+  color: var(--rule);
+  cursor: not-allowed;
+}
+
+/* Na úzkém displeji jdou šipky pod úchyt, aby text měl víc místa. */
+@media (max-width: 30rem) {
+  :root {
+    --slot-gutter: 1.75rem;
+  }
+
+  .card__top {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'lead main'
+      'moves main';
+    padding-right: var(--space-3);
+  }
+
+  .card__moves {
+    align-self: start;
+  }
+
+  .card__panel {
+    padding-left: var(--space-3);
+  }
+}
+
+/* Rozbalovací karta: celá horní část je klikací díky natažené ploše tlačítka. */
+.card__toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.card__toggle::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.card__toggle:focus-visible {
+  outline: none;
+}
+
+.card__toggle:focus-visible::after {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.card__chevron {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--stamp);
+  transition: transform 150ms ease;
+}
+
+.card--expanded .card__chevron {
+  transform: rotate(180deg);
+}
+
+.card--expandable .card__top:hover {
+  background: rgb(255 255 255 / 0.45);
+}
+
+/* ---------- Razítko s částkou ---------- */
+
+.card__amount {
+  margin-top: var(--space-3);
+}
+
+.stamp {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border: 3px solid var(--stamp);
+  border-radius: 4px;
+  outline: 1px solid var(--stamp);
+  outline-offset: 2px;
+  color: var(--stamp);
+  background: var(--sheet);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 112%;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.125rem, 1rem + 0.8vw, 1.375rem);
+  line-height: 1.2;
+  transform: rotate(-2deg);
+  transform-origin: center;
+}
+
+.stamp--animate {
+  animation: stamp-drop 340ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+@keyframes stamp-drop {
+  0% {
+    opacity: 0;
+    transform: rotate(-9deg) scale(1.2);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-2deg) scale(1);
+  }
+}
+
+.card__amount-type {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--stamp);
+}
+
+.card__amount-explanation {
+  margin-top: var(--space-1);
+  max-width: var(--measure);
+}
+
+/* ---------- Detail karty ---------- */
+
+.card__panel {
+  border-top: 1px solid var(--correct);
+  padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-3) + 22px + var(--space-2));
+  background: var(--sheet);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.card__panel[hidden] {
+  display: none;
+}
+
+.card__panel p {
+  max-width: var(--measure);
+}
+
+.card__panel p + p {
+  margin-top: var(--space-3);
+}
+
+.card__panel h4 {
+  margin: var(--space-4) 0 var(--space-1);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card__period {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.card__refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.source-ref {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.card__refs .source-ref {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch);
+  min-height: var(--touch);
+}
+
+/* ---------- Animace zamčení ---------- */
+
+.card--just-locked {
+  animation: lock-click 180ms ease-out;
+}
+
+.card--just-locked .card__check {
+  animation: check-pop 200ms ease-out both;
+}
+
+@keyframes lock-click {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes check-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- Lišta kontroly ---------- */
+
+.check-bar {
+  margin-top: var(--space-5);
+}
+
+.check-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+  padding: var(--space-4);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.check-bar__status {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.check-bar__message:empty {
+  display: none;
+}
+
+.check-bar__attempts {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.check-bar__message + .check-bar__attempts {
+  margin-top: var(--space-1);
+}
+
+.check-bar__action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.check-bar__hint {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 40rem) {
+  .check-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    margin-left: calc(-1 * var(--space-4));
+    margin-right: calc(-1 * var(--space-4));
+  }
+
+  .check-bar__inner {
+    border-radius: 0;
+    border-width: 1px 0 0;
+    padding: var(--space-3) var(--space-4) calc(var(--space-3) + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 12px rgb(27 35 48 / 0.08);
+  }
+
+  .check-bar__inner .btn {
+    flex: 1 1 auto;
+  }
+
+  .check-bar__action {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------- Zdroje ---------- */
+
+.sources {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--rule);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.sources h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.sources__asof {
+  margin-top: var(--space-1);
+  color: var(--ink-muted);
+}
+
+.sources__group {
+  margin-top: var(--space-5);
+}
+
+.sources__group h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sources__group ul {
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+.sources__item {
+  padding: var(--space-1) var(--space-2);
+  margin-left: calc(-1 * var(--space-2));
+  border-radius: 4px;
+  max-width: var(--measure);
+}
+
+.sources__item a {
+  display: inline;
+}
+
+.sources__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sources__publisher {
+  color: var(--ink-muted);
+}
+
+.sources__item.is-highlighted {
+  animation: source-flash 2s ease-out;
+}
+
+@keyframes source-flash {
+  0%,
+  40% {
+    background: #e6dff3;
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* ---------- Dialog výhry ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: rgb(27 35 48 / 0.55);
+}
+
+.overlay__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 28rem);
+  padding: var(--space-6) var(--space-5);
+  background: var(--sheet);
+  border-radius: var(--radius);
+  border-top: 6px solid var(--correct);
+  text-align: center;
+}
+
+.overlay__dialog h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.overlay__dialog p {
+  margin-top: var(--space-3);
+}
+
+.overlay__attempts {
+  font-family: var(--font-display);
+  color: var(--ink-muted);
+}
+
+.overlay__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.coin-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---------- Omezený pohyb ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sources__item.is-highlighted {
+    background: #e6dff3;
+  }
+}

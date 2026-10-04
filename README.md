@@ -1,8 +1,8 @@
 # Politická gramotnost
 
-Krátké kvízy o tom, jak funguje česká politika. V prvním kvízu „Kolik to stálo stát?“ hráč řadí 10 politických kauz podle toho, kolik stály veřejné rozpočty.
+Krátké kvízy o tom, jak funguje česká politika. V kvízu „Kolik to stálo stát?“ hráč řadí politické kauzy podle nákladů. V kvízu „Splnil, nebo nesplnil?“ tipuje plnění předvolebních slibů.
 
-Zadání je v `docs/GDD-politicka-gramotnost.md`. Podklady ke kauzám jsou v `docs/kauzy-zdroje.md`; editovatelná data kvízu jsou v `quizzes/kolik-to-stalo/`.
+Zadání je v `docs/GDD-politicka-gramotnost.md`. Data kvízů jsou ve složkách `quizzes/<id>/`.
 
 ## Spuštění
 
@@ -14,7 +14,7 @@ npm run build    # statický web do dist/
 npm run preview  # náhled sestaveného webu
 ```
 
-Web je čistě statický a používá hash routing (`#/`, `#/kviz/kolik-to-stalo`). Poběží proto na libovolném hostingu i v podsložce. Fonty jsou hostované lokálně a web nic nestahuje z cizích domén.
+Web je čistě statický a používá hash routing (`#/`, `#/kviz/kolik-to-stalo`, `#/kviz/politicke-sliby`). Poběží proto na libovolném hostingu i v podsložce. Fonty jsou hostované lokálně a web nic nestahuje z cizích domén.
 
 ## GitHub Pages
 
@@ -39,14 +39,18 @@ Další nastavení:
 - adresa pro hlášení chyb: `REPORT_URL` v `src/copy.ts`,
 - barvy, fonty a rozestupy: `src/styles/tokens.css`.
 
+## Kvíz „Splnil, nebo nesplnil?“
+
+Data jsou v `quizzes/politicke-sliby/data.json` (česká pole: `id`, `jmeno`, `slib`, `popis`, `prohlaseni`, `splnil`, `info`, `zdroje`, …). Fotky politiků v `fotky_politiku.json` se napojí podle `jmeno`. Meta v `meta.json` (`type: "promises"`). Herní engine je v `src/quizzes/promises/`.
+
 ## Přidání kvízu
 
-Další kvíz typu řazení přidáš bez změny kódu registru:
+Další kvíz stejného typu přidáš bez změny kódu registru:
 
-1. Vytvoř složku `quizzes/<id>/` podle vzoru `kolik-to-stalo` (`index.ts`, `meta.json`, `data.json`).
+1. Vytvoř složku `quizzes/<id>/` podle vzoru `kolik-to-stalo` nebo `politicke-sliby` (`index.ts`, `meta.json`, `data.json`).
 2. Domovská stránka ho najde přes `import.meta.glob` v `src/quizzes/discover.ts`.
 
-Jiný typ kvízu (výběr z možností, přiřazování dvojic) dostane vlastní složku v `src/quizzes/` se schématem a komponentou. Komponentu pak podle `type` vybere `src/pages/QuizPage.tsx`.
+Jiný typ kvízu dostane vlastní složku v `src/quizzes/` se schématem a komponentou. Komponentu pak podle `type` vybere `src/pages/QuizPage.tsx`.
 
 ## Struktura
 
@@ -64,5 +68,6 @@ src/
   pages/                   domovská stránka, stránka kvízu
   quizzes/discover.ts      objevování složek quizzes/
   quizzes/ordering/        engine kvízu typu řazení
+  quizzes/promises/        engine kvízu typu sliby
   styles/                  tokens.css, global.css
 ```

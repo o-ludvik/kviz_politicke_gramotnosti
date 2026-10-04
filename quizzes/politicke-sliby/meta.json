@@ -1,0 +1,26 @@
+{
+  "id": "politicke-sliby",
+  "type": "promises",
+  "title": "Splnil, nebo nesplnil?",
+  "shortDescription": "Tipni u 22 předvolebních slibů Babišovy a Fialovy vlády, jestli je politici splnili.",
+  "estimatedMinutes": 8,
+  "dataAsOf": "2026-10-03",
+  "methodology": "Hodnocení vychází z přijatých zákonů, dat MF a ČSÚ a z analýz Demagog.cz. Kategorie „částečně splněno“ jsme převáděli na binární podle toho, zda se jádro slibu uskutečnilo. U každého politika je alespoň jeden splněný a jeden nesplněný slib. Plnění ovlivnily i vnější okolnosti (covid u Babišovy vlády, válka na Ukrajině a inflace u Fialovy).",
+  "contextSources": [
+    {
+      "title": "Sliby vlády Andreje Babiše (2018–2021)",
+      "url": "https://demagog.cz/sliby/sliby-vlady-andreje-babise",
+      "publisher": "Demagog.cz"
+    },
+    {
+      "title": "Sliby vlády Petra Fialy (2021–2025)",
+      "url": "https://demagog.cz/sliby/sliby-vlady-petra-fialy",
+      "publisher": "Demagog.cz"
+    },
+    {
+      "title": "50 slibů. Tady je inventura Fialovy vlády",
+      "url": "https://www.seznamzpravy.cz/clanek/volby-do-poslanecke-snemovny-vic-nesplnenych-slibu-nez-babis-co-fialova-vlada-dotahla-a-v-cem-selhala-286231",
+      "publisher": "Seznam Zprávy"
+    }
+  ]
+}

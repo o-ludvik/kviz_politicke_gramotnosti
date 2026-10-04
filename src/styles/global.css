@@ -1007,6 +1007,417 @@ button {
   pointer-events: none;
 }
 
+/* ---------- Kvíz slibů ---------- */
+
+.promises-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: var(--space-5);
+}
+
+.promises-stage {
+  width: min(100%, 36rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.promises-stage--expanded {
+  width: min(100%, 52rem);
+}
+
+.promise-card-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+}
+
+.promise-card {
+  min-width: 0;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.promise-card-row .promise-card {
+  flex: 1 1 48%;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.promise-panel {
+  flex: 1 1 52%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-left: 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  animation: promise-panel-in 280ms ease-out;
+}
+
+.promise-panel--correct {
+  border-color: var(--correct);
+}
+
+.promise-panel--wrong {
+  border-color: var(--wrong);
+}
+
+.promise-panel__header {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  border-bottom: 1px solid var(--rule);
+}
+
+.promise-panel--correct .promise-panel__header {
+  color: var(--correct);
+  background: var(--correct-tint);
+  border-bottom-color: var(--correct);
+}
+
+.promise-panel--wrong .promise-panel__header {
+  color: var(--wrong);
+  background: var(--wrong-tint);
+  border-bottom-color: var(--wrong);
+}
+
+.promise-panel__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  overflow: auto;
+  max-height: min(70vh, 36rem);
+}
+
+.promise-panel__body p {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+}
+
+@keyframes promise-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.promise-card__hero {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 5 / 4;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.promise-card__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.promise-card__quote {
+  position: absolute;
+  inset: auto 0 0;
+  margin: 0;
+  padding: var(--space-5) var(--space-4) var(--space-3);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.55) 40%);
+  color: #fff;
+}
+
+.promise-card__quote p {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-text);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.35;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 -1px 0 #000,
+    0 1px 0 #000,
+    -1px 0 0 #000,
+    1px 0 0 #000;
+}
+
+.promise-card__quote cite {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 -1px 0 #000,
+    0 1px 0 #000,
+    -1px 0 0 #000,
+    1px 0 0 #000;
+}
+
+.promise-card__credit {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  max-width: 40%;
+  margin: 0;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.55);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  line-height: 1.3;
+  color: #fff;
+  text-align: right;
+  z-index: 2;
+}
+
+.promise-card__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.promise-card__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.promise-card__progress {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.promise-card__meta {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.promise-card__name {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.promise-card__party {
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.promise-card__role {
+  margin: var(--space-1) 0 var(--space-4);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink-muted);
+}
+
+.promise-card__promise {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.promise-card__desc {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 1.1rem;
+  line-height: var(--text-leading);
+}
+
+.promise-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.promise-card__sources {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+}
+
+.promise-card__sources li {
+  margin-bottom: var(--space-2);
+}
+
+.promise-review__quote {
+  font-family: var(--font-text);
+  font-style: italic;
+}
+
+.promise-review__truth--correct {
+  color: var(--correct);
+}
+
+.promise-review__truth--wrong {
+  color: var(--wrong);
+}
+
+@media (max-width: 40rem) {
+  .promise-card-row {
+    flex-direction: column;
+  }
+
+  .promise-card-row .promise-card,
+  .promise-panel {
+    flex: 1 1 auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--rule);
+  }
+
+  .promise-panel {
+    border-top: 0;
+    border-radius: 0 0 var(--radius) var(--radius);
+    animation: promise-panel-in-mobile 280ms ease-out;
+  }
+
+  .promise-card-row .promise-card {
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  @keyframes promise-panel-in-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.promises-score__body {
+  font-family: var(--font-text);
+  font-size: 1.125rem;
+  line-height: var(--text-leading);
+}
+
+.promises-score__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-5) 0 var(--space-6);
+}
+
+.promises-review__heading {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+}
+
+.promises-review-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.promise-review {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.promise-review--correct {
+  border-color: var(--correct);
+}
+
+.promise-review--wrong {
+  border-color: var(--wrong);
+}
+
+.promise-review__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.promise-review__toggle {
+  display: flex;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--touch);
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.promise-review__toggle:focus-visible {
+  outline: var(--focus);
+  outline-offset: -3px;
+}
+
+.promise-review__mark {
+  flex: 0 0 auto;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.promise-review--correct .promise-review__mark {
+  color: var(--correct);
+}
+
+.promise-review--wrong .promise-review__mark {
+  color: var(--wrong);
+}
+
+.promise-review__who {
+  font-weight: 700;
+}
+
+.promise-review__panel {
+  padding: 0 var(--space-4) var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+}
+
+.promise-review__panel p {
+  margin: 0 0 var(--space-3);
+  max-width: var(--measure);
+}
+
+.promise-review__truth {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
 /* ---------- Omezený pohyb ---------- */
 
 @media (prefers-reduced-motion: reduce) {

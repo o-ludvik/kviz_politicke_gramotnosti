@@ -11,6 +11,8 @@
   --stamp: #4b2e83;
   --correct: #17663f;
   --correct-tint: #ddefe3;
+  --wrong: #8b2e2e;
+  --wrong-tint: #f3e4e4;
 
   --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
   --font-text: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;

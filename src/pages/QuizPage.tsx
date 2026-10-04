@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import type { OrderingQuiz as OrderingQuizData } from '../data/schema';
+import type { AnyQuiz } from '../data/schema';
 import { OrderingQuiz } from '../quizzes/ordering/OrderingQuiz';
+import { PromisesQuiz } from '../quizzes/promises/PromisesQuiz';
 import { findQuiz } from '../quizzes/registry';
 import { navigate } from '../router';
 
-type LoadState = { status: 'loading' } | { status: 'ready'; quiz: OrderingQuizData } | { status: 'error' };
+type LoadState = { status: 'loading' } | { status: 'ready'; quiz: AnyQuiz } | { status: 'error' };
 
 /** Načte data kvízu a podle typu vybere komponentu. */
 export function QuizPage({ quizId }: { quizId: string }) {
@@ -36,5 +37,7 @@ export function QuizPage({ quizId }: { quizId: string }) {
   switch (state.quiz.type) {
     case 'ordering':
       return <OrderingQuiz quiz={state.quiz} onExit={() => navigate('/')} />;
+    case 'promises':
+      return <PromisesQuiz quiz={state.quiz} onExit={() => navigate('/')} />;
   }
 }

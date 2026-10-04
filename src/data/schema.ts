@@ -99,9 +99,67 @@ export const orderingQuizSchema = z.object({
   contextSources: z.array(scandalSourceSchema).default([]),
 });
 
+export const promiseSourceSchema = z.object({
+  nazev: z.string().min(1),
+  url: z.string().startsWith('https://'),
+});
+
+export const promisePhotoSchema = z.object({
+  url: z.string().min(1),
+  atribuace: z.string().nullable(),
+  stranka_souboru: z.string().startsWith('https://'),
+  licence: z.string().nullable(),
+});
+
+export const promiseItemSchema = z.object({
+  id: z.string().min(1),
+  jmeno: z.string().min(1),
+  strana: z.string().min(1),
+  funkce: z.string().min(1),
+  obdobi: z.string().min(1),
+  slib: z.string().min(1),
+  popis: z.string().min(1),
+  prohlaseni: z.string().min(1),
+  zdroj_prohlaseni: z.string().min(1),
+  datum: z.string().min(1),
+  splnil: z.boolean(),
+  info: z.string().min(1),
+  zdroje: z.array(promiseSourceSchema).min(1),
+  foto: promisePhotoSchema,
+});
+
+export const promiseItemsSchema = z
+  .array(promiseItemSchema)
+  .min(1)
+  .superRefine((items, ctx) => {
+    const ids = new Set<string>();
+    for (const item of items) {
+      if (ids.has(item.id)) {
+        ctx.addIssue({ code: 'custom', message: `duplicitní id: ${item.id}` });
+      }
+      ids.add(item.id);
+    }
+  });
+
+export const promisesQuizSchema = z.object({
+  id: z.string().min(1),
+  type: z.literal('promises'),
+  title: z.string().min(1),
+  shortDescription: z.string().min(1),
+  estimatedMinutes: z.number().positive(),
+  dataAsOf: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  methodology: z.string().min(1),
+  items: promiseItemsSchema,
+  contextSources: z.array(scandalSourceSchema).default([]),
+});
+
 export type Actor = z.infer<typeof actorSchema>;
 export type ScandalSource = z.infer<typeof scandalSourceSchema>;
 export type Scandal = z.infer<typeof scandalSchema>;
 /** Alias pro herní engine — položka řazení. */
 export type OrderingItem = Scandal;
 export type OrderingQuiz = z.infer<typeof orderingQuizSchema>;
+export type PromisePhoto = z.infer<typeof promisePhotoSchema>;
+export type PromiseItem = z.infer<typeof promiseItemSchema>;
+export type PromisesQuiz = z.infer<typeof promisesQuizSchema>;
+export type AnyQuiz = OrderingQuiz | PromisesQuiz;

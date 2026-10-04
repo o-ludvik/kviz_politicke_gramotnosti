@@ -17,11 +17,20 @@ describe('domovská stránka', () => {
   it('ukazuje kvízy nalezené ve složkách quizzes/', async () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: 'Politická gramotnost' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Hrát' })).toHaveAttribute('href', '#/kviz/kolik-to-stalo');
+    expect(screen.getByRole('link', { name: 'Hrát', description: 'Kolik to stálo stát?' })).toHaveAttribute(
+      'href',
+      '#/kviz/kolik-to-stalo',
+    );
+    expect(screen.getByRole('link', { name: 'Hrát', description: 'Splnil, nebo nesplnil?' })).toHaveAttribute(
+      'href',
+      '#/kviz/politicke-sliby',
+    );
     expect(screen.queryByText('Připravujeme')).not.toBeInTheDocument();
     expect(await screen.findByText(/\d+ kauz, asi 5 minut/)).toBeInTheDocument();
+    expect(await screen.findByText(/\d+ slibů, asi 8 minut/)).toBeInTheDocument();
     expect(screen.getByText(/Údaje platí ke 3\. 10\. 2026\./)).toBeInTheDocument();
   });
+
 
   it('tlačítko dlaždice odpovídá uloženému stavu', () => {
     const base = { v: 2 as const, order: ['a'], locked: [], attempts: 1, lastCheckedOrder: null };

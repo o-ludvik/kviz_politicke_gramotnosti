@@ -2,7 +2,7 @@
   "id": "kolik-to-stalo",
   "type": "ordering",
   "title": "Kolik to stálo stát?",
-  "shortDescription": "Seřaď 10 politických kauz podle toho, kolik stály veřejné rozpočty.",
+  "shortDescription": "Seřaď 6 politických kauz podle toho, kolik stály veřejné rozpočty.",
   "estimatedMinutes": 5,
   "dataAsOf": "2026-10-03",
   "axis": {

@@ -1,0 +1,522 @@
+[
+  {
+    "id": "bitcoin",
+    "name": "Bitcoinová kauza",
+    "actors": [
+      {
+        "name": "Pavel Blažek",
+        "role": "tehdejší ministr spravedlnosti (ODS, ze strany po kauze odešel)"
+      },
+      {
+        "name": "Tomáš Jiřikovský",
+        "role": "dárce bitcoinů, dříve odsouzený provozovatel tržiště Nucleus Market"
+      },
+      {
+        "name": "Radomír Daňhel",
+        "role": "bývalý vysoký úředník ministerstva"
+      },
+      {
+        "name": "Kárim Titz",
+        "role": "advokát"
+      }
+    ],
+    "shortDesc": "Ministerstvo spravedlnosti přijalo darem bitcoiny od muže, který byl odsouzen za provozování nelegálního tržiště na darknetu.",
+    "longDesc": "Období: 2025–2026\n\nV březnu 2025 přijalo ministerstvo spravedlnosti dar 468 bitcoinů od Tomáše Jiřikovského. Ministerstvo je prodalo v 78 aukcích a do státního majetku tak přibylo 956,8 milionu korun.\n\nPo zveřejnění daru ministr Pavel Blažek rezignoval a odešel z ODS. Podle obžaloby šlo o legalizaci výnosů z trestné činnosti, tedy o praní špinavých peněz. Policie v roce 2026 obvinila Blažka a další dva lidi. Část kauzy týkající se vrácení počítačů Jiřikovskému policie odložila.\n\nTolik ministerstvo utržilo prodejem darovaných bitcoinů. Případné náklady kauzy nikdo nevyčíslil.\n\nPrávní stav: Vrchní státní zastupitelství v Olomouci podalo 31. 7. 2026 obžalobu ke Krajskému soudu v Brně. Navrhuje 6,5 roku vězení pro Blažka i Daňhela, 8 let pro Titze a 20 let souhrnného trestu pro Jiřikovského. Blažek vinu odmítá. Rozsudek zatím nepadl, platí presumpce neviny.",
+    "cost": "+956,8 mil. Kč pro stát",
+    "index": 10,
+    "sources": [
+      {
+        "title": "Ministerstvo spravedlnosti získalo bitcoiny za miliardu od obchodníka s drogami",
+        "url": "https://www.ceska-justice.cz/2025/05/ministerstvo-spravedlnosti-ziskalo-bitcoiny-za-miliardu-od-obchodnika-s-drogami/",
+        "publisher": "Česká justice",
+        "date": "5/2025"
+      },
+      {
+        "title": "Ministerstvo spravedlnosti letos prodalo v aukcích bitcoiny za skoro miliardu",
+        "url": "https://www.fxstreet.cz/ministerstvo-spravedlnosti-letos-prodalo-v-aukcich-bitcoiny-za-skoro-miliardu.html",
+        "publisher": "FXstreet.cz"
+      },
+      {
+        "title": "Bitcoinová kauza: Policie obvinila Blažka i jeho náměstka",
+        "url": "https://denikn.cz/2053379/bitcoinova-kauza-policie-obvinila-blazka-i-jeho-namestka/",
+        "publisher": "Deník N"
+      },
+      {
+        "title": "Exministr Blažek obviněný kvůli bitcoinům. Policie ukázala na tři lidi",
+        "url": "https://www.ceska-justice.cz/2026/05/exministr-blazek-bitcoiny-policie-obvinila/",
+        "publisher": "Česká justice",
+        "date": "5/2026"
+      },
+      {
+        "title": "6 a půl roku pro exministra Blažka. Žalobkyně navrhla tresty v bitcoinové kauze",
+        "url": "https://www.ceska-justice.cz/2026/08/6-a-pul-roku-pro-exministra-blazka-bitcoiny-obzaloba/",
+        "publisher": "Česká justice",
+        "date": "8/2026"
+      },
+      {
+        "title": "Kauza bitcoin míří k soudu. Mezi obžalovanými je i exministr Blažek",
+        "url": "https://www.transparency.cz/kauza-bitcoin-miri-k-soudu-mezi-obzalovanymi-je-i-exministr-blazek/",
+        "publisher": "Transparency International ČR"
+      },
+      {
+        "title": "Kauza Bitcoin: Vrácení počítačů Jiřikovskému nebyl zločin",
+        "url": "https://www.seznamzpravy.cz/clanek/domaci-kauzy-kauza-bitcoin-vraceni-pocitacu-jirikovskemu-nebyl-zlocin-300304",
+        "publisher": "Seznam Zprávy"
+      },
+      {
+        "title": "Bitcoinová kauza",
+        "url": "https://cs.wikipedia.org/wiki/Bitcoinov%C3%A1_kauza",
+        "publisher": "Wikipedie"
+      }
+    ]
+  },
+  {
+    "id": "covid-nakupy",
+    "name": "Covidové nákupy ochranných pomůcek",
+    "actors": [
+      {
+        "name": "Adam Vojtěch",
+        "role": "tehdejší ministr zdravotnictví (ANO), dnes opět ministr zdravotnictví"
+      },
+      {
+        "name": "Jan Hamáček",
+        "role": "tehdejší ministr vnitra (ČSSD)"
+      }
+    ],
+    "shortDesc": "Na jaře 2020 nakupovala ministerstva respirátory a roušky bez soutěží, každé na vlastní pěst a za velmi rozdílné ceny.",
+    "longDesc": "Období: 2020\n\nNejvyšší kontrolní úřad zjistil, že ministerstva zdravotnictví a vnitra od ledna do srpna 2020 utratila za ochranné pomůcky včetně dopravy celkem 8,5 miliardy korun. Nákupy podle kontrolorů probíhaly bez koordinace, ceny se výrazně lišily a respirátory FFP2 kupovalo ministerstvo zdravotnictví až za 777 korun za kus. Část pomůcek neměla potřebné certifikáty.\n\nMinisterstvo vnitra navíc předalo 1,8 milionu kusů pomůcek z daru skupin J&T a EPH soukromé firmě, aniž smluvně zajistilo veřejný zájem. Dovoz stál stát téměř 7 milionů korun a NKÚ tuto část předal policii. Ministerstva se hájila tím, že v krizi musela nakupovat rychle.\n\nTolik obě ministerstva v roce 2020 zaplatila za ochranné pomůcky v nákupech, které NKÚ označil za chaotické. Kolik z toho bylo přeplaceno, nikdo nevyčíslil.\n\nPrávní stav: Obžalobu ani odsouzení související s nákupy se nepodařilo dohledat. Jde o zjištění kontroly NKÚ, ne o soudem prokázanou škodu.",
+    "cost": "8,5 mld. Kč",
+    "index": 1,
+    "sources": [
+      {
+        "title": "Závěr kontrolního úřadu: ministerstva 10 let podceňovala hrozby epidemií, nákupy byly chaotické",
+        "url": "https://www.irozhlas.cz/zpravy-domov/kontrola-nejvyssi-kontrolni-urad-nakup-rousek-ministerstvo-zdravotnictvi_2103220715_vtk",
+        "publisher": "iROZHLAS"
+      },
+      {
+        "title": "Audit odhalil předražené respirátory, Hamáček se brání",
+        "url": "https://www.frekvence1.cz/clanky/podle-nku-ministerstva-nakupovala-predrazene-respiratory-vnitro-muselo-pomucky-nakoupit-rychle-brani-se-hamacek.shtml",
+        "publisher": "Frekvence 1"
+      },
+      {
+        "title": "Respirátory a další pomůcky: Nákup státem provázel chaos, upozornil NKÚ",
+        "url": "https://www.blesk.cz/clanek/zpravy-koronavirus/673029/statni-chaos-a-respiratory-i-za-777-kc-za-kus-rozkryla-kontrola-nku-babis-kritiku-odmitl.html",
+        "publisher": "Blesk"
+      },
+      {
+        "title": "Ať mě zavřou, jestli v tom byla chyba, hájí Hamáček dar od miliardářů",
+        "url": "https://www.seznamzpravy.cz/clanek/at-me-zavrou-jestli-byla-chyba-vysvetluje-hamacek-dar-od-miliardaru-148067",
+        "publisher": "Seznam Zprávy"
+      }
+    ]
+  },
+  {
+    "id": "capi-hnizdo",
+    "name": "Čapí hnízdo",
+    "actors": [
+      {
+        "name": "Andrej Babiš",
+        "role": "zakladatel Agrofertu, předseda ANO, dnes premiér (stíhání je pozastaveno, vina mu nebyla prokázána)"
+      },
+      {
+        "name": "Jana Nagyová",
+        "role": "dlouholetá Babišova spolupracovnice, dnes europoslankyně za ANO (pravomocně odsouzena)"
+      }
+    ],
+    "shortDesc": "Farma Čapí hnízdo dostala dotaci určenou malým a středním podnikům; podle obžaloby k tomu byla účelově vyvedena z holdingu Agrofert.",
+    "longDesc": "Období: dotace 2008, trestní řízení 2017–2026\n\nFarma u Olbramovic na Benešovsku získala v roce 2008 dotaci zhruba 50 milionů korun z programu pro malé a střední podniky. Podle obžaloby vznikla škoda 49,9 milionu korun, z toho 42,5 milionu šlo z rozpočtu EU a po 3,7 milionu ze státního rozpočtu a z rozpočtu Středočeského kraje.\n\nFirma Imoba z holdingu Agrofert v červnu 2018 vrátila celkem 49 960 256 korun. Na průběh trestního řízení to vliv nemělo.\n\nDotaci zhruba 50 milionů korun firma Imoba v roce 2018 vrátila, čistý dopad na veřejné rozpočty je tedy přibližně nulový.\n\nPrávní stav: Jana Nagyová dostala 4. 5. 2026 tříletou podmínku a peněžitý trest 500 tisíc korun; senát přitom byl vázán názorem odvolacího soudu. Vrchní soud v Praze rozsudek 31. 8. 2026 potvrdil, je pravomocný a zbývá možnost dovolání. Sněmovna 5. 3. 2026 Andreje Babiše k trestnímu stíhání nevydala, jeho stíhání je po dobu mandátu pozastaveno a vina mu prokázána nebyla.",
+    "cost": "≈ 0 Kč (49,96 mil. Kč vráceno)",
+    "index": 7,
+    "sources": [
+      {
+        "title": "Imoba vrátila padesátimilionovou dotaci na Čapí hnízdo. Na Babišovo stíhání to nemá vliv",
+        "url": "https://zpravy.aktualne.cz/domaci/imoba-vratila-padesatimilionovou-dotaci-na-capi-hnizdo-na-ba/r~fcd668d07b7411e8a105ac1f6b220ee8/",
+        "publisher": "Aktuálně.cz"
+      },
+      {
+        "title": "Imoba vrátila 50milionovou dotaci na farmu Čapí hnízdo, většina peněz půjde do státního rozpočtu",
+        "url": "https://www.irozhlas.cz/zpravy-domov/capi-hnizdo-imoba-dotace-vraceni_1806291003_ako",
+        "publisher": "iROZHLAS"
+      },
+      {
+        "title": "Obžaloba: Babiš zajistil vytvoření podmínek na dotaci pro Čapí hnízdo",
+        "url": "https://www.ceskenoviny.cz/zpravy/obzaloba-babis-zajistil-vytvoreni-podminek-na-dotaci-pro-capi-hnizdo/2230323",
+        "publisher": "ČTK / České noviny"
+      },
+      {
+        "title": "Nagyová dostala v kauze Čapí hnízdo podmínku a trest půl milionu korun",
+        "url": "https://www.ceskenoviny.cz/zpravy/2798827",
+        "publisher": "ČTK / České noviny",
+        "date": "5/2026"
+      },
+      {
+        "title": "Podmínka a půlmilionový trest pro Nagyovou. Rozhodnutí v kauze Čapí hnízdo je pravomocné",
+        "url": "https://www.ceska-justice.cz/2026/08/podminka-a-pulmilionovy-trest-pro-nagyovou-capi-hnizdo/",
+        "publisher": "Česká justice",
+        "date": "8/2026"
+      },
+      {
+        "title": "Kauza Čapí hnízdo",
+        "url": "https://cs.wikipedia.org/wiki/Kauza_%C4%8Cap%C3%AD_hn%C3%ADzdo",
+        "publisher": "Wikipedie"
+      }
+    ]
+  },
+  {
+    "id": "digitalizace-stavebniho-rizeni",
+    "name": "Digitalizace stavebního řízení",
+    "actors": [
+      {
+        "name": "Ivan Bartoš",
+        "role": "ministr pro místní rozvoj do podzimu 2024 (Piráti)"
+      },
+      {
+        "name": "Klára Dostálová",
+        "role": "ministryně pro místní rozvoj 2017–2021 (ANO); audit jí přičítá část zpoždění, ona to odmítá"
+      }
+    ],
+    "shortDesc": "Systémy pro digitální stavební řízení byly v červenci 2024 spuštěny, přestože nefungovaly, a odpovědný ministr kvůli tomu přišel o funkci.",
+    "longDesc": "Období: 2018–2025, spuštění v červenci 2024\n\nPortál stavebníka a navazující systémy spustilo ministerstvo pro místní rozvoj v červenci 2024, ale nefungovaly. Ivan Bartoš byl na podzim 2024 kvůli tomu odvolán. Audit zadaný jeho nástupcem Petrem Kulhánkem (za STAN) našel 32 klíčových problémů a část chyb připsal už vedení ministerstva za Kláry Dostálové, která to odmítá.\n\nPřímé výdaje podle Kulhánka činily asi 215 milionů korun, podle Bartoše zhruba 330 milionů z plánovaných 650 milionů. Úřad pro ochranu hospodářské soutěže uložil ministerstvu pokutu 1 milion korun.\n\nOdhady rizik jsou mnohem vyšší: Česku hrozí ztráta až 13,7 miliardy korun z Národního plánu obnovy a ekonom Lukáš Kovanda odhadl škody pro ekonomiku na zhruba 2 miliardy korun jen za léto 2024. Tyto částky ale nejsou přímé výdaje státu.\n\nTolik podle ministerstva stál nefunkční systém. Ztráty firem a možné sankce z EU v částce nejsou.\n\nPrávní stav: Bylo podáno několik trestních oznámení, nikdo obviněn není. NKÚ kontrolu odložil kvůli šetření Evropské komise a forenznímu auditu. Vláda Andreje Babiše posunula termín digitalizace na konec roku 2030.",
+    "cost": "215–330 mil. Kč",
+    "index": 3,
+    "sources": [
+      {
+        "title": "Chyboval Bartoš a před ním i Dostálová, tvrdí audit digitalizace",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/digitalizace-mela-zpozdeni-uz-za-dostalove-tvrdi-audit-ta-to-odmita-360164",
+        "publisher": "ČT24"
+      },
+      {
+        "title": "Žalostný pokus o digitalizaci stavebního řízení vyšel firmy draho. Kulhánek hází odpovědnost na minulou vládu",
+        "url": "https://m.echo24.cz/a/HyXjC/zpravy-domaci-digitalizace-stavebni-rizeni-bartos-pirati-audit-kulhanek-ano",
+        "publisher": "Echo24"
+      },
+      {
+        "title": "Digitalizace stavebního řízení stála 330 milionů. Do hry vstupuje NKÚ",
+        "url": "https://www.fintag.cz/2024/12/27/nefunkcni-digitalizace-stavebniho-rizeni-stala-330-milionu-do-hry-vstupuje-nku/",
+        "publisher": "Fintag"
+      },
+      {
+        "title": "Digitalizace stavebního řízení pod lupou. Hrozí Česku miliardové sankce?",
+        "url": "https://www.asb-portal.cz/aktualne/digitalizace-stavebniho-rizeni-pod-lupou-hrozi-cesku-miliardove-sankce",
+        "publisher": "ASB-portál"
+      },
+      {
+        "title": "Fiasko digitalizace stavebního řízení zatím českou ekonomiku připravilo o takřka dvě miliardy korun",
+        "url": "https://zpravy.kurzy.cz/781350-fiasko-digitalizace-stavebniho-rizeni-zatim-ceskou-ekonomiku-pripravilo-o-takrka-dve-miliardy-korun/",
+        "publisher": "Kurzy.cz"
+      },
+      {
+        "title": "NKÚ se zatím nebude zabývat digitalizací stavebního řízení",
+        "url": "https://zpravy.aktualne.cz/domaci/nku-se-zatim-nebude-zabyvat-digitalizaci-stavebniho-rizeni/r~009c6fb0d67111efb589ac1f6b220ee8/",
+        "publisher": "Aktuálně.cz"
+      },
+      {
+        "title": "Stát to znovu nezvládl. Vláda odkládá digitalizaci stavebního řízení až do roku 2030",
+        "url": "https://www.ceska-justice.cz/2025/12/vlada-odklada-digitalizaci-stavebniho-rizeni-do-roku-2030/",
+        "publisher": "Česká justice",
+        "date": "12/2025"
+      }
+    ]
+  },
+  {
+    "id": "agrofert-dotace",
+    "name": "Dotace Agrofertu a střet zájmů",
+    "actors": [
+      {
+        "name": "Andrej Babiš",
+        "role": "zakladatel holdingu Agrofert, předseda ANO, premiér v letech 2017–2021 a znovu od prosince 2025"
+      },
+      {
+        "name": "Holding Agrofert",
+        "role": "zhruba 90 firem, kterých se vymáhání týkalo"
+      }
+    ],
+    "shortDesc": "Firmy holdingu Agrofert pobíraly dotace v letech, kdy byl jejich zakladatel Andrej Babiš premiérem; podle ministerstva zemědělství to bylo ve střetu zájmů.",
+    "longDesc": "Období: dotace 2017–2021, spor 2025–2026\n\nV srpnu 2025 oznámil ministr zemědělství Marek Výborný (KDU-ČSL), že stát bude po zhruba 90 firmách holdingu vymáhat 5,1 miliardy korun z dotací za roky 2017–2021; největší část, asi 4,24 miliardy, tvořily evropské nárokové platby na plochu. V září 2025 odhad zvýšil na víc než 7 miliard, protože započítal i dotace vyplácené přímo ministerstvem. Agrofert tvrdil, že k vracení není důvod.\n\nV dubnu 2026 Státní zemědělský intervenční fond rozhodl, že nárokové dotace vymáhat nebude, protože se na ně podle jeho analýz zákon o střetu zájmů nevztahuje. Definitivně odebral jen 8 projektů za 68 milionů korun a národní dotace za zhruba 1 miliardu dál prověřuje.\n\nEvropská komise výdaje spojené s Agrofertem neproplácí, dokud střet zájmů neposoudí; jde například o 204,7 milionu korun za květen 2026. Pokud je Komise neproplatí, zůstanou na českém státním rozpočtu. Ověřovatelé z Demagog.cz upozorňují, že u nárokových dotací nelze z veřejných zdrojů s jistotou určit, zda byly vyplaceny neoprávněně.\n\nTolik chtělo ministerstvo zemědělství v roce 2025 zpět. V dubnu 2026 státní fond vymáhání většiny těchto dotací zastavil.\n\nPrávní stav: Jde o správní spor, ne o trestní řízení. O vrácení peněz pravomocně rozhodnuto nebylo a Evropská komise střet zájmů dál posuzuje.",
+    "cost": "5,1–7 mld. Kč",
+    "index": 2,
+    "sources": [
+      {
+        "title": "Resort bude po Agrofertu vymáhat dotace ve výši 5,1 miliardy, řekl Výborný",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/ministerstvo-bude-po-agrofertu-vymahat-dotace-ve-vysi-51-miliardy-rekl-vyborny-364416",
+        "publisher": "ČT24",
+        "date": "8/2025"
+      },
+      {
+        "title": "Výborného ministerstvo bude chtít po Agrofertu přes sedm miliard. Holding tvrdí, že k tomu není důvod",
+        "url": "https://www.irozhlas.cz/zpravy-domov/ministerstvo-bude-chtit-po-agrofertu-pres-sedm-miliard-vyborny-puvodne-zminoval_2509181057_ntu",
+        "publisher": "iROZHLAS",
+        "date": "9/2025"
+      },
+      {
+        "title": "Miliardy zůstávají v Agrofertu: Fond zastavil vymáhání dotací, Babiš mluví o udavačích",
+        "url": "https://www.ceska-justice.cz/2026/04/miliardy-zustavaji-v-agrofertu-babis-mluvi-o-udavacich/",
+        "publisher": "Česká justice",
+        "date": "4/2026"
+      },
+      {
+        "title": "Fond prověřuje kvůli možnému střetu zájmů dotace pro Agrofert za miliardu",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/fond-proveruje-kvuli-moznemu-stretu-zajmu-dotace-pro-agrofert-za-miliardu-372869",
+        "publisher": "ČT24"
+      },
+      {
+        "title": "EK: České úřady mohly obnovit dotace firmám z Agrofertu, EU zatím nic neproplácí",
+        "url": "https://www.ceskenoviny.cz/zpravy/ek-ceske-urady-mohly-obnovit-dotace-firmam-z-agrofertu-eu-zatim-nic-neproplaci/2824242",
+        "publisher": "ČTK / České noviny"
+      },
+      {
+        "title": "SZIF zaslal EK zprávu o dotacích vyplacených Agrofertu za 204 mil. Kč",
+        "url": "https://www.ceskenoviny.cz/zpravy/zemedelsky-fond-zaslal-ek-zpravu-o-dotacich-vyplacenych-agrofertu-za-204-mil-kc/2836367",
+        "publisher": "ČTK / České noviny"
+      },
+      {
+        "title": "Dotace pro Agrofert, soudy a Evropská komise",
+        "url": "https://cedmohub.eu/cs/dotace-pro-agrofert-soudy-a-evropska-komise/",
+        "publisher": "CEDMO"
+      },
+      {
+        "title": "ověření výroku „Sedm miliard jste neoprávněně vyplatil Agrofertu“",
+        "url": "https://demagog.cz/vyrok/24303",
+        "publisher": "Demagog.cz"
+      }
+    ]
+  },
+  {
+    "id": "dozimetr",
+    "name": "Dozimetr",
+    "actors": [
+      {
+        "name": "Michal Redl",
+        "role": "podnikatel a lobbista, podle obžaloby vůdce skupiny; byl napojený na STAN"
+      },
+      {
+        "name": "Petr Hlubuček",
+        "role": "bývalý náměstek pražského primátora a místopředseda STAN, hnutí ho vyloučilo"
+      },
+      {
+        "name": "Pavel Kos",
+        "role": "podle obžaloby člen skupiny, vinu uznal"
+      },
+      {
+        "name": "Marek Šnajdr",
+        "role": "exposlanec ODS, obžalovaný ve vedlejší větvi o zakázce VZP"
+      }
+    ],
+    "shortDesc": "Podle obžaloby skupina kolem lobbisty dosazovala manažery do pražského dopravního podniku a za úplatky ovlivňovala jeho zakázky.",
+    "longDesc": "Období: odhaleno v červnu 2022, soud od roku 2025\n\nPolicie kauzu odhalila v červnu 2022. Podle obžaloby skupina kolem Michala Redla systematicky obsazovala klíčová místa v Dopravním podniku hl. m. Prahy, aby spřátelení manažeři mohli ovlivňovat výběrová řízení, a brala za to úplatky.\n\nSoud ale dopravnímu podniku nepřiznal postavení poškozeného, protože škodu nespecifikoval ani nevyčíslil. U soudu zazněly výpovědi o úplatku 50 milionů korun spojeném s projektem Nové Holešovice; Redl je označuje za nevěrohodné. Dozimetr je tak příkladem velkého politického skandálu, u něhož není známo, kolik stál veřejné rozpočty.\n\nDopravní podnik u soudu škodu nevyčíslil ani neprokázal, proto ho soud nepřijal jako poškozeného.\n\nPrávní stav: Hlavní líčení probíhá. Pavel Kos vinu uznal, Michal Redl a Petr Hlubuček ji odmítají. Ve vedlejší větvi o zakázce VZP byl obžalován Marek Šnajdr, který vinu rovněž odmítá. Rozsudek zatím nepadl, platí presumpce neviny.",
+    "cost": "Škoda neprokázána",
+    "index": 8,
+    "sources": [
+      {
+        "title": "Dopravní podnik není v Dozimetru jako poškozený. Neprokázal škodu, uvedl soud",
+        "url": "https://www.seznamzpravy.cz/clanek/domaci-kauzy-dopravni-podnik-neni-v-dozimetru-jako-poskozeny-neprokazal-skodu-uvedl-soud-276734",
+        "publisher": "Seznam Zprávy"
+      },
+      {
+        "title": "Soud v kauze Dozimetr přehledně: Redl odmítl vinu, Kos se přiznal",
+        "url": "https://www.e15.cz/domaci/redl-odmitl-vinu-jeho-blizky-pritel-kos-se-priznal-shrnujeme-hlavni-body-soudu-v-kauze-dozimetr-1427547",
+        "publisher": "E15"
+      },
+      {
+        "title": "Kos uznal vinu v kauze Dozimetr, Redl i Hlubuček ji odmítli",
+        "url": "https://www.ceskenoviny.cz/zpravy/2723645",
+        "publisher": "ČTK / České noviny"
+      },
+      {
+        "title": "Výpovědi o 50milionovém úplatku jsou nedůvěryhodné, říká Redl k projektu Nové Holešovice",
+        "url": "https://www.reflex.cz/clanek/online-prenos/135915/vypovedi-o-50milionovem-uplatku-jsou-neduveryhodne-rika-redl-k-projektu-nove-holesovice-glosovali-jsme-zive.html",
+        "publisher": "Reflex"
+      },
+      {
+        "title": "Exposlanec ODS skončí kvůli Dozimetru před soudem. Podle žalobce uplácel",
+        "url": "https://www.seznamzpravy.cz/clanek/domaci-kauzy-exposlanec-ods-skonci-kvuli-dozimetru-pred-soudem-podle-zalobce-uplacel-303444",
+        "publisher": "Seznam Zprávy"
+      },
+      {
+        "title": "Kauza Dozimetr",
+        "url": "https://cs.wikipedia.org/wiki/Kauza_Dozimetr",
+        "publisher": "Wikipedie"
+      },
+      {
+        "title": "téma Akce Dozimetr",
+        "url": "https://ct24.ceskatelevize.cz/tema/akce-dozimetr-1703",
+        "publisher": "ČT24"
+      }
+    ]
+  },
+  {
+    "id": "frakce-id",
+    "name": "Frakce ID v Evropském parlamentu",
+    "actors": [
+      {
+        "name": "Bývalá frakce Identita a demokracie (2019–2024)",
+        "role": "členy byly mimo jiné francouzské Národní sdružení, italská Liga a česká SPD"
+      },
+      {
+        "name": "Nikdo z SPD není podle dostupných zdrojů obviněn"
+      }
+    ],
+    "shortDesc": "Evropský veřejný žalobce vyšetřuje, jak bývalá frakce Identita a demokracie v Evropském parlamentu nakládala s penězi z rozpočtu EU.",
+    "longDesc": "Období: 2019–2024, vyšetřování od roku 2025\n\nÚřad evropského veřejného žalobce (EPPO) v červenci 2025 zahájil vyšetřování možného zneužití 4,3 milionu eur, které frakce ID dostala v letech 2019–2024. Částka vychází z návrhu auditu Evropského parlamentu, který kritizoval nesprávné zadávání zakázek a dary na činnost nesouvisející s prací parlamentu.\n\n30. června 2026 proběhly razie ve Francii, Španělsku, Itálii a Belgii. V Česku se nezasahovalo a nikdo z SPD obviněn není.\n\nTolik podle návrhu auditu Evropského parlamentu mohla frakce použít neoprávněně. Jde o peníze z rozpočtu EU, ne z českého státního rozpočtu.\n\nPrávní stav: Vyšetřování EPPO probíhá, obžaloba podána nebyla. Platí presumpce neviny.",
+    "cost": "≈ 105 mil. Kč (4,3 mil. €)",
+    "index": 4,
+    "sources": [
+      {
+        "title": "Policie podniká razie kvůli údajnému zneužití peněz EU parlamentní frakcí ID",
+        "url": "https://www.ceskenoviny.cz/zpravy/policie-podnika-razie-kvuli-udajnemu-zneuziti-penez-eu-parlamentni-frakci-id/2845806",
+        "publisher": "ČTK / České noviny",
+        "date": "6/2026"
+      },
+      {
+        "title": "Frakce ID čelí podezření ze zneužití milionů eur. Působila v ní i česká SPD",
+        "url": "https://euractiv.cz/section/aktualne-v-eu/news/frakce-id-celi-podezreni-ze-zneuziti-milionu-eur-pusobila-v-ni-i-ceska-spd/",
+        "publisher": "EURACTIV.cz"
+      }
+    ]
+  },
+  {
+    "id": "motol",
+    "name": "Motol",
+    "actors": [
+      {
+        "name": "Miloslav Ludvík",
+        "role": "bývalý ředitel Fakultní nemocnice v Motole"
+      },
+      {
+        "name": "Pavel Budinský",
+        "role": "bývalý náměstek ředitele"
+      },
+      {
+        "name": "Geosan Group",
+        "role": "stavební firma, obviněná v září 2026"
+      }
+    ],
+    "shortDesc": "Podle policie brali šéfové největší české nemocnice úplatky od dodavatelů, mimo jiné při rekonstrukci jednoho z pavilonů.",
+    "longDesc": "Období: zakázky před rokem 2025, zadržení v říjnu 2025\n\nDetektivové Národní centrály proti organizovanému zločinu na žádost Úřadu evropského veřejného žalobce tvrdí, že exředitel Miloslav Ludvík a jeho náměstek Pavel Budinský přijímali úplatky od dodavatelů nemocnice.\n\nHlavní linie se týká rekonstrukce Modrého pavilonu za 1,2 miliardy korun bez DPH, kterou prováděla firma Geosan Group. Dodatek na vícepráce byl podle policie předražen o 85 milionů korun, z čehož mělo 10 milionů jít na úplatky. Policie zajistila majetek za 230 milionů korun. Ludvík vinu popírá.\n\nO tolik byl podle policie předražen dodatek ke stavební zakázce. Soud to zatím neposuzoval.\n\nPrávní stav: Obviněno je 19 lidí a několik firem, od září 2026 i Geosan. Obžaloba zatím podána nebyla, platí presumpce neviny.",
+    "cost": "85 mil. Kč",
+    "index": 5,
+    "sources": [
+      {
+        "title": "Kauza úplatků v Motole se rozrůstá. Policie obvinila stavební gigant Geosan",
+        "url": "https://www.zdravotnickydenik.cz/2026/09/kauza-uplatku-v-motole-se-rozrusta-policie-obvinila-stavebni-gigant-geosan/",
+        "publisher": "Zdravotnický deník",
+        "date": "9/2026"
+      },
+      {
+        "title": "Kauza Motol: Ludvík zůstává ve vazbě. Soud má obavu, že by mohl utéct",
+        "url": "https://www.irozhlas.cz/zpravy-domov/motol-miloslav-ludvik-vazba_2510171019_kno",
+        "publisher": "iROZHLAS",
+        "date": "10/2025"
+      },
+      {
+        "title": "Kauza Motol: Budinský je na svobodě. Ludvík tvrdí, že nebral úplatky",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/zalobkyne-pustila-z-vazby-budinskeho-z-kauzy-motol-369769",
+        "publisher": "ČT24"
+      },
+      {
+        "title": "„O žebrácký holi nepůjdeme“. Nové odposlechy v kauze Motol",
+        "url": "https://odkryto.cz/o-zebracky-holi-nepujdeme-nove-odposlechy-v-kauze-motol",
+        "publisher": "Odkryto.cz"
+      },
+      {
+        "title": "Kauza Motol",
+        "url": "https://cs.wikipedia.org/wiki/Kauza_Motol",
+        "publisher": "Wikipedie"
+      }
+    ]
+  },
+  {
+    "id": "sportovni-dotace",
+    "name": "Sportovní dotace",
+    "actors": [
+      {
+        "name": "Simona Kratochvílová",
+        "role": "bývalá náměstkyně pro sport na ministerstvu školství (pravomocně odsouzena)"
+      },
+      {
+        "name": "Miroslav Pelta",
+        "role": "bývalý předseda Fotbalové asociace ČR (pravomocně odsouzen)"
+      },
+      {
+        "name": "Kateřina Valachová",
+        "role": "tehdejší ministryně školství (ČSSD), kvůli kauze rezignovala; obžalovaná nebyla"
+      }
+    ],
+    "shortDesc": "Náměstkyně ministerstva školství podle soudu rozdělovala dotace pro sportovní kluby podle přání šéfa fotbalové asociace.",
+    "longDesc": "Období: 2017, pravomocně 2025\n\nPodle soudu Pelta a Kratochvílová v roce 2017 ovlivnili rozdělení peněz z programu pro materiálně-technickou podporu sportovních klubů v celkovém objemu 454 milionů korun a zvýhodnili 18 žadatelů. Pokusili se tak způsobit státu škodu nejméně 175 milionů korun.\n\nKe škodě nedošlo, protože ministerstvo po zatčení Kratochvílové vyplácení pozastavilo, programy zrušilo a vyhlásilo znovu. Ministerstvo školství se přesto v řízení domáhalo náhrady škody přes 1,1 miliardy korun. Soudy se k věci vracely třikrát; předseda České unie sportu Miroslav Jansta byl obžaloby zproštěn.\n\nMinisterstvo po zatčení náměstkyně vyplácení zastavilo, takže peníze neodešly. Soud dvojici odsoudil za pokus.\n\nPrávní stav: Vrchní soud v Praze 28. 5. 2025 pravomocně potvrdil tresty: Pelta 5,5 roku vězení a 5 milionů korun, Kratochvílová 6 let a 2 miliony korun. Kratochvílová do vězení nastoupila.",
+    "cost": "0 Kč (pokus o škodu nejméně 175 mil. Kč)",
+    "index": 9,
+    "sources": [
+      {
+        "title": "Fotbalový boss Pelta půjde za sportovní dotace na 5,5 roku do vězení",
+        "url": "https://www.seznamzpravy.cz/clanek/domaci-kauzy-vrchni-soud-pelta-pujde-za-sportovni-dotace-do-vezeni-277747",
+        "publisher": "Seznam Zprávy",
+        "date": "5/2025"
+      },
+      {
+        "title": "Soud potvrdil v kauze dotací Peltovi a Kratochvílové tresty vězení",
+        "url": "https://www.ceskenoviny.cz/zpravy/2678982",
+        "publisher": "ČTK / České noviny",
+        "date": "5/2025"
+      },
+      {
+        "title": "Kratochvílová z kauzy sportovních dotací nastoupila do vězení",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/kratochvilova-z-kauzy-sportovnich-dotaci-nastoupila-do-vezeni-365794",
+        "publisher": "ČT24"
+      },
+      {
+        "title": "Peltu uznal soud vinným. Dostal 6 let vězení, Kratochvílová 6,5 roku",
+        "url": "https://www.echo24.cz/a/Hkk95/zpravy-domov-soud-unal-miroslav-pelta-vinnym-verdikt-je-nepravomocny",
+        "publisher": "Echo24",
+        "date": "2023"
+      },
+      {
+        "title": "Vrchní soud zrušil rozsudek v kauze sportovních dotací, Peltův případ se bude řešit potřetí",
+        "url": "https://ct24.ceskatelevize.cz/clanek/domaci/vrchni-soud-zrusil-rozsudek-v-kauze-sportovnich-dotaci-peltuv-pripad-se-bude-resit-potreti-349984",
+        "publisher": "ČT24",
+        "date": "2024"
+      }
+    ]
+  },
+  {
+    "id": "stoka",
+    "name": "Stoka",
+    "actors": [
+      {
+        "name": "Jiří Švachula",
+        "role": "bývalý místostarosta Brna-středu, tehdy člen ANO"
+      },
+      {
+        "name": "Lubomír Smolka",
+        "role": "podnikatel"
+      }
+    ],
+    "shortDesc": "Podle soudu skupina kolem místostarosty brněnské městské části manipulovala za úplatky radniční zakázky.",
+    "longDesc": "Období: 2015–2019\n\nPodle soudu organizovaná skupina kolem místostarosty Jiřího Švachuly v letech 2015–2019 ovlivňovala zakázky městské části Brno-střed výměnou za úplatky. Zmanipulované zakázky měly hodnotu přes 260 milionů korun a úplatky dosahovaly desítek milionů.\n\nRadnice uplatnila škodu 49 milionů korun, státní zástupce celkovou škodu odhadl zhruba na půl miliardy. Kauza se týká rozpočtu městské části, ne státu.\n\nTakovou škodu uplatnila u soudu radnice Brno-střed. Státní zástupce celkovou škodu odhadoval až na půl miliardy korun.\n\nPrávní stav: Původní trest 9,5 roku pro Švachulu zrušil Vrchní soud v Olomouci. V prosinci 2025 soud schválil dohody o vině a trestu: Švachula dostal 7 let a 8 měsíců, podnikatel Lubomír Smolka podmínku a peněžitý trest 3 miliony korun.",
+    "cost": "49 mil. Kč",
+    "index": 6,
+    "sources": [
+      {
+        "title": "Kauza Stoka: Smolka dostal podmínku a peněžitý trest, Švachula má trest snížený",
+        "url": "https://www.irozhlas.cz/zpravy-domov/kauza-stoka-soud-schvalil-prvni-dohodu-smolka-dostal-podminku-a-penezity-trest-3_2512041013_mkm",
+        "publisher": "iROZHLAS",
+        "date": "12/2025"
+      },
+      {
+        "title": "Kauza Stoka: Švachula půjde znovu do vězení, Smolka vyvázl s podmínkou",
+        "url": "https://www.denik.cz/krimi/soud-brno-kauza-stoka-svachula-sedm-let-vezeni.html",
+        "publisher": "Deník"
+      },
+      {
+        "title": "Švachula půjde do vězení na 9,5 roku. Kauza Stoka pokračuje dalším prověřováním",
+        "url": "https://zpravy.aktualne.cz/domaci/stoka-schema-aktualizace/r~a88a4ec6e0b111eca9eeac1f6b220ee8/",
+        "publisher": "Aktuálně.cz"
+      },
+      {
+        "title": "Soud v Brně uložil expolitikovi Švachulovi v kauze Stoka 9,5 roku vězení",
+        "url": "https://www.ceskenoviny.cz/zpravy/soud-v-brne-ulozil-v-expolitikovi-svachulovi-v-kauze-stoka-9-5-roku-vezeni/2213397",
+        "publisher": "ČTK / České noviny"
+      }
+    ]
+  }
+]

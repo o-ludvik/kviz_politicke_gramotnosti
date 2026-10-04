@@ -20,6 +20,7 @@ export const copy = {
   'quiz.axis.top': 'Nejdražší',
   'quiz.axis.bottom': 'Nejlevnější',
   'card.people': 'Klíčoví aktéři',
+  'card.people.toggle': 'Kdo to je?',
   'card.handle.aria': 'Přetáhnout kartu {název}',
   'card.up.aria': 'Posunout {název} výš',
   'card.down.aria': 'Posunout {název} níž',

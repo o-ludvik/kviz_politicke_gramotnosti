@@ -37,7 +37,7 @@ export function App() {
 
   return (
     <>
-      <main className="page" tabIndex={-1}>
+      <main className={route.name === 'quiz' && !invalid ? 'page page--wide' : 'page'} tabIndex={-1}>
         {notice && route.name === 'home' && (
           <p className="notice" role="status">
             {notice}

@@ -1,6 +1,6 @@
-// Čisté funkce herní logiky kvízu typu „řazení“ (GDD kap. 6.4, 6.5, 6.9).
+// Čisté funkce herní logiky kvízu typu „řazení“.
 
-export type RankedItem = { id: string; rank: number };
+export type RankedItem = { id: string; index: number };
 
 export type Rng = () => number;
 
@@ -101,22 +101,16 @@ export function stepAmongFree(
   return moveAmongFree(order, locked, slot, target);
 }
 
-/** Rozsah slotů (od 0), ve kterých je karta s daným pořadím správně. */
-export function correctSlotRange(items: readonly RankedItem[], rank: number): [number, number] {
-  const count = items.filter((i) => i.rank === rank).length;
-  return [rank - 1, rank - 1 + count - 1];
-}
-
-export function isCorrectAt(item: RankedItem, slot: number, items: readonly RankedItem[]): boolean {
-  const [a, b] = correctSlotRange(items, item.rank);
-  return slot >= a && slot <= b;
+/** Karta je správně, když leží ve slotu `index - 1` (index je 1-based). */
+export function isCorrectAt(item: RankedItem, slot: number): boolean {
+  return slot === item.index - 1;
 }
 
 export function countCorrect(order: readonly string[], items: readonly RankedItem[]): number {
   const byId = new Map(items.map((i) => [i.id, i]));
   return order.filter((id, slot) => {
     const item = byId.get(id);
-    return item !== undefined && isCorrectAt(item, slot, items);
+    return item !== undefined && isCorrectAt(item, slot);
   }).length;
 }
 
@@ -130,7 +124,7 @@ export function check(
   let correct = 0;
   order.forEach((id, slot) => {
     const item = byId.get(id);
-    if (!item || !isCorrectAt(item, slot, items)) return;
+    if (!item || !isCorrectAt(item, slot)) return;
     correct++;
     if (!locked.has(id)) newlyLocked.push(id);
   });
@@ -152,7 +146,7 @@ export function shuffle(items: readonly RankedItem[], rng: Rng): string[] {
     if (countCorrect(next, items) <= 1) return next;
   }
   // Pojistka: obrácené řešení (pro běžná data nikdy nenastane).
-  return [...items].sort((a, b) => b.rank - a.rank).map((i) => i.id);
+  return [...items].sort((a, b) => b.index - a.index).map((i) => i.id);
 }
 
 export function sameOrder(a: readonly string[] | null, b: readonly string[]): boolean {

@@ -1,0 +1,25 @@
+{
+  "id": "kolik-to-stalo",
+  "type": "ordering",
+  "title": "Kolik to stálo stát?",
+  "shortDescription": "Seřaď 10 politických kauz podle toho, kolik stály veřejné rozpočty.",
+  "estimatedMinutes": 5,
+  "dataAsOf": "2026-10-03",
+  "axis": {
+    "top": "Nejdražší",
+    "bottom": "Nejlevnější"
+  },
+  "revealAmounts": "onComplete",
+  "contextSources": [
+    {
+      "title": "Prezident jmenoval vládu Andreje Babiše",
+      "url": "https://ct24.ceskatelevize.cz/clanek/domaci/pavel-jmenuje-babisovu-vladu-368166",
+      "publisher": "ČT24"
+    },
+    {
+      "title": "Přehledně: Noví ministři vlády Andreje Babiše",
+      "url": "https://www.e15.cz/ministri-nova-vlada",
+      "publisher": "E15"
+    }
+  ]
+}

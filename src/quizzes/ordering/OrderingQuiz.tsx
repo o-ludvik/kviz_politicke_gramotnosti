@@ -77,7 +77,7 @@ export function OrderingQuiz({ quiz, onExit, rng = Math.random }: Props) {
   const listRef = useRef<HTMLOListElement>(null);
 
   const locked = useMemo(() => new Set(state.locked), [state.locked]);
-  const titleOf = (id: string) => byId.get(id)?.title ?? id;
+  const titleOf = (id: string) => byId.get(id)?.name ?? id;
   const positionOf = (id: string | number) => state.order.indexOf(String(id)) + 1;
 
   useEffect(() => {
@@ -213,7 +213,6 @@ export function OrderingQuiz({ quiz, onExit, rng = Math.random }: Props) {
                       expanded={expanded.has(id)}
                       canMoveUp={!isLocked && neighbourFreeSlot(state.order, locked, slot, -1) !== undefined}
                       canMoveDown={!isLocked && neighbourFreeSlot(state.order, locked, slot, 1) !== undefined}
-                      dataAsOf={quiz.dataAsOf}
                       onToggle={toggle}
                       onStep={onStep}
                     />

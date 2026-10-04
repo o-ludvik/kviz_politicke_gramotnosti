@@ -14,11 +14,11 @@ describe('router', () => {
 });
 
 describe('domovská stránka', () => {
-  it('ukazuje kvíz a dvě dlaždice „Připravujeme“', async () => {
+  it('ukazuje kvízy nalezené ve složkách quizzes/', async () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: 'Politická gramotnost' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Hrát' })).toHaveAttribute('href', '#/kviz/kolik-to-stalo');
-    expect(screen.getAllByText('Připravujeme')).toHaveLength(2);
+    expect(screen.queryByText('Připravujeme')).not.toBeInTheDocument();
     expect(await screen.findByText('10 kauz, asi 5 minut')).toBeInTheDocument();
     expect(screen.getByText(/Údaje platí ke 3\. 10\. 2026\./)).toBeInTheDocument();
   });

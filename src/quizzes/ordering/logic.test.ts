@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import raw from '../../data/quizzes/kolik-to-stalo.json';
+import data from '../../../quizzes/kolik-to-stalo/data.json';
+import { scandalsSchema } from '../../data/schema';
 import {
   check,
-  correctSlotRange,
   countCorrect,
   isCorrectAt,
   moveAmongFree,
@@ -12,26 +12,24 @@ import {
   type RankedItem,
 } from './logic';
 
-const items: RankedItem[] = raw.items.map(({ id, rank }) => ({ id, rank }));
-const solution = [...items].sort((a, b) => a.rank - b.rank).map((i) => i.id);
+const items: RankedItem[] = scandalsSchema.parse(data).map(({ id, index }) => ({ id, index }));
+const solution = [...items].sort((a, b) => a.index - b.index).map((i) => i.id);
 
-describe('correctSlotRange a isCorrectAt', () => {
-  it('tři karty s rank 7 patří do slotů 6–8', () => {
-    expect(correctSlotRange(items, 7)).toEqual([6, 8]);
-    expect(correctSlotRange(items, 1)).toEqual([0, 0]);
-    expect(correctSlotRange(items, 10)).toEqual([9, 9]);
+describe('isCorrectAt', () => {
+  it('karta patří jen do slotu index - 1', () => {
+    const covid = items.find((i) => i.id === 'covid-nakupy')!;
+    expect(isCorrectAt(covid, 0)).toBe(true);
+    expect(isCorrectAt(covid, 1)).toBe(false);
+    const bitcoin = items.find((i) => i.id === 'bitcoin')!;
+    expect(isCorrectAt(bitcoin, 9)).toBe(true);
+    expect(isCorrectAt(bitcoin, 6)).toBe(false);
   });
 
-  it('přijme kterékoli pořadí karet se stejným rank', () => {
-    const ties = items.filter((i) => i.rank === 7);
-    for (const item of ties) {
-      for (const slot of [6, 7, 8]) expect(isCorrectAt(item, slot, items)).toBe(true);
-      expect(isCorrectAt(item, 5, items)).toBe(false);
-      expect(isCorrectAt(item, 9, items)).toBe(false);
-    }
-    const permuted = [...solution];
-    [permuted[6], permuted[8]] = [permuted[8]!, permuted[6]!];
-    expect(check(permuted, new Set(), items).allCorrect).toBe(true);
+  it('remízy už nejsou — každá kauza má unikátní slot', () => {
+    expect(check(solution, new Set(), items).allCorrect).toBe(true);
+    const swapped = [...solution];
+    [swapped[6], swapped[7]] = [swapped[7]!, swapped[6]!];
+    expect(check(swapped, new Set(), items).allCorrect).toBe(false);
   });
 });
 

@@ -1,9 +1,8 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import type { CSSProperties } from 'react';
-import { formatDate, t } from '../../copy';
+import { useState, type CSSProperties } from 'react';
+import { t } from '../../copy';
 import type { OrderingItem } from '../../data/schema';
-import { RichText, SourceRef } from './sourceLinks';
 
 type Props = {
   item: OrderingItem;
@@ -18,7 +17,6 @@ type Props = {
   expanded: boolean;
   canMoveUp: boolean;
   canMoveDown: boolean;
-  dataAsOf: string;
   onToggle: (id: string) => void;
   onStep: (id: string, step: -1 | 1) => void;
 };
@@ -34,7 +32,6 @@ export function ItemCard({
   expanded,
   canMoveUp,
   canMoveDown,
-  dataAsOf,
   onToggle,
   onStep,
 }: Props) {
@@ -46,7 +43,9 @@ export function ItemCard({
       attributes: { roleDescription: 'přesouvatelná karta' },
     });
 
+  const [peopleOpen, setPeopleOpen] = useState(false);
   const titleId = `card-title-${item.id}`;
+  const peopleId = `card-people-${item.id}`;
   const panelId = `card-panel-${item.id}`;
   const position = slot + 1;
 
@@ -91,7 +90,7 @@ export function ItemCard({
               ref={setActivatorNodeRef}
               {...attributes}
               {...listeners}
-              aria-label={t('card.handle.aria', { název: item.title })}
+              aria-label={t('card.handle.aria', { název: item.name })}
             >
               <GripIcon />
             </button>
@@ -109,53 +108,63 @@ export function ItemCard({
                 onClick={() => onToggle(item.id)}
               >
                 {srPosition}
-                <span>{item.title}</span>
+                <span>{item.name}</span>
                 <ChevronIcon />
               </button>
             ) : (
               <>
                 {srPosition}
-                {item.title}
+                {item.name}
               </>
             )}
           </h3>
 
           {locked && <p className="card__status">{t('card.locked')}</p>}
 
-          {showAmount && (
-            <div className="card__amount">
-              <div
-                className={stampDelayIndex === null ? 'stamp' : 'stamp stamp--animate'}
-                style={stampDelayIndex === null ? undefined : ({ '--i': stampDelayIndex } as CSSProperties)}
+          <div className="card__body">
+            <p className="card__oneliner">{item.shortDesc}</p>
+
+            <div className="card__people">
+              <span className="card__people-label">{t('card.people')}:</span>{' '}
+              <span className="card__names">{item.actors.map((p) => p.name).join(', ')}</span>{' '}
+              <button
+                type="button"
+                className="card__people-toggle"
+                aria-expanded={peopleOpen}
+                aria-controls={peopleId}
+                onClick={() => setPeopleOpen((o) => !o)}
               >
-                {item.amount.display}
-              </div>
-              <p className="card__amount-type">{item.amount.typeLabel}</p>
-              <p className="card__amount-explanation">{item.amount.explanation}</p>
+                {t('card.people.toggle')}
+              </button>
+              <ul id={peopleId} className="card__roles" hidden={!peopleOpen}>
+                {item.actors.map((p) => (
+                  <li key={p.name}>
+                    {p.name}
+                    {p.role && <span className="card__role"> – {p.role}</span>}
+                  </li>
+                ))}
+              </ul>
             </div>
-          )}
-
-          <p className="card__oneliner">{item.oneLiner}</p>
-
-          <div className="card__people">
-            <span className="card__people-label">{t('card.people')}</span>
-            <ul>
-              {item.people.map((p) => (
-                <li key={p.name}>
-                  {p.name}
-                  {p.role && <span className="card__role"> – {p.role}</span>}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
+
+        {showAmount && (
+          <div className="card__amount">
+            <div
+              className={stampDelayIndex === null ? 'stamp' : 'stamp stamp--animate'}
+              style={stampDelayIndex === null ? undefined : ({ '--i': stampDelayIndex } as CSSProperties)}
+            >
+              {item.cost}
+            </div>
+          </div>
+        )}
 
         {!locked && (
           <div className="card__moves">
             <button
               type="button"
               className="move-btn"
-              aria-label={t('card.up.aria', { název: item.title })}
+              aria-label={t('card.up.aria', { název: item.name })}
               aria-disabled={!canMoveUp || undefined}
               data-move="up"
               onClick={() => canMoveUp && onStep(item.id, -1)}
@@ -165,7 +174,7 @@ export function ItemCard({
             <button
               type="button"
               className="move-btn"
-              aria-label={t('card.down.aria', { název: item.title })}
+              aria-label={t('card.down.aria', { název: item.name })}
               aria-disabled={!canMoveDown || undefined}
               data-move="down"
               onClick={() => canMoveDown && onStep(item.id, 1)}
@@ -178,24 +187,28 @@ export function ItemCard({
 
       {expandable && (
         <div className="card__panel" id={panelId} hidden={!expanded}>
-          {expanded && (
+          {expanded &&
+            item.longDesc.split(/\n\n+/).map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          {expanded && item.sources.length > 0 && (
             <>
-              <p className="card__period">{item.period}</p>
-              {item.detail.map((para, i) => (
-                <p key={i}>
-                  <RichText text={para} />
-                </p>
-              ))}
-              <h4>{t('detail.legal', { datum: formatDate(dataAsOf) })}</h4>
-              <p>
-                <RichText text={item.legalStatus} />
-              </p>
               <h4>{t('detail.sources')}</h4>
-              <p className="card__refs">
-                {item.sourceIds.map((n) => (
-                  <SourceRef key={n} n={n} />
+              <ul className="card__source-list">
+                {item.sources.map((s) => (
+                  <li key={s.url}>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer">
+                      {s.title}
+                      <span className="sr-only"> {t('sources.newTab')}</span>
+                    </a>
+                    <span className="sources__publisher">
+                      {', '}
+                      {s.publisher}
+                      {s.date && ` (${s.date})`}
+                    </span>
+                  </li>
                 ))}
-              </p>
+              </ul>
             </>
           )}
         </div>

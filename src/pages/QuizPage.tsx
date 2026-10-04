@@ -14,7 +14,7 @@ export function QuizPage({ quizId }: { quizId: string }) {
     let alive = true;
     const entry = findQuiz(quizId);
     entry
-      ?.load?.()
+      ?.load()
       .then((quiz) => alive && setState({ status: 'ready', quiz }))
       .catch((err: unknown) => {
         console.error(err);

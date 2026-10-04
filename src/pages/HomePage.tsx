@@ -25,33 +25,19 @@ export function HomePage() {
 
 function QuizTile({ entry }: { entry: QuizRegistryEntry }) {
   const [meta, setMeta] = useState<Meta | null>(null);
-  const active = entry.status === 'active' && entry.load;
 
   useEffect(() => {
     let alive = true;
-    if (entry.status === 'active')
-      entry
-        .load?.()
-        .then((q) => alive && setMeta({ count: q.items.length, minutes: q.estimatedMinutes }))
-        .catch(() => {});
+    entry
+      .load()
+      .then((q) => alive && setMeta({ count: q.items.length, minutes: q.estimatedMinutes }))
+      .catch(() => {});
     return () => {
       alive = false;
     };
   }, [entry]);
 
   const titleId = `tile-${entry.id}`;
-
-  if (!active) {
-    return (
-      <article className="tile tile--soon" aria-labelledby={titleId}>
-        <div className="tile__head">
-          <h2 id={titleId}>{entry.title}</h2>
-          <span className="tile__soon">{t('home.card.comingSoon')}</span>
-        </div>
-      </article>
-    );
-  }
-
   const progress = quizProgress(entry.id);
   const label =
     progress === 'solved' ? t('home.card.again') : progress === 'inProgress' ? t('home.card.resume') : t('home.card.start');

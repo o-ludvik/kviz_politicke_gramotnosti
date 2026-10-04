@@ -1,8 +1,9 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import raw from '../../data/quizzes/kolik-to-stalo.json';
-import { orderingQuizSchema } from '../../data/schema';
+import data from '../../../quizzes/kolik-to-stalo/data.json';
+import meta from '../../../quizzes/kolik-to-stalo/meta.json';
+import { orderingQuizSchema, scandalsSchema } from '../../data/schema';
 import { seededRng } from './logic';
 import { OrderingQuiz } from './OrderingQuiz';
 import { loadState, saveState, storageKey } from './persistence';
@@ -12,8 +13,8 @@ vi.mock('canvas-confetti', () => {
   return { default: Object.assign(() => null, { create, shapeFromText: () => ({}) }) };
 });
 
-const quiz = orderingQuizSchema.parse(raw);
-const solution = [...quiz.items].sort((a, b) => a.rank - b.rank).map((i) => i.id);
+const quiz = orderingQuizSchema.parse({ ...meta, items: scandalsSchema.parse(data) });
+const solution = [...quiz.items].sort((a, b) => a.index - b.index).map((i) => i.id);
 
 function renderQuiz() {
   const onExit = vi.fn();
@@ -22,7 +23,7 @@ function renderQuiz() {
 }
 
 function amountTexts() {
-  return quiz.items.flatMap((i) => [i.amount.display, i.amount.explanation]);
+  return quiz.items.map((i) => i.cost);
 }
 
 function presetSolvedOrder() {
@@ -38,7 +39,7 @@ function presetSolvedOrder() {
 }
 
 describe('OrderingQuiz', () => {
-  it('před vyřešením DOM neobsahuje částky ani jejich vysvětlení', () => {
+  it('před vyřešením DOM neobsahuje částky', () => {
     const { container } = renderQuiz();
     const html = container.innerHTML;
     for (const text of amountTexts()) expect(html).not.toContain(text);
@@ -74,7 +75,7 @@ describe('OrderingQuiz', () => {
     renderQuiz();
     const saved = loadState(quiz.id)!;
     const secondId = saved.order[1]!;
-    const title = quiz.items.find((i) => i.id === secondId)!.title;
+    const title = quiz.items.find((i) => i.id === secondId)!.name;
     await user.click(screen.getByRole('button', { name: `Posunout ${title} výš` }));
     expect(loadState(quiz.id)!.order[0]).toBe(secondId);
     expect(await screen.findByText(new RegExp(`${title} je teď na 1\\. místě\\.`))).toBeInTheDocument();
@@ -96,8 +97,7 @@ describe('OrderingQuiz', () => {
     await user.click(within(dialog).getByRole('button', { name: 'Ukázat částky' }));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     for (const item of quiz.items) {
-      expect(screen.getByText(item.amount.display)).toBeInTheDocument();
-      expect(screen.getByText(item.amount.explanation)).toBeInTheDocument();
+      expect(screen.getByText(item.cost)).toBeInTheDocument();
     }
     expect(screen.getByText('Klikni na kauzu a přečti si, odkud částka pochází.')).toBeInTheDocument();
 
@@ -107,7 +107,7 @@ describe('OrderingQuiz', () => {
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
     const panel = document.getElementById(toggle.getAttribute('aria-controls')!)!;
     expect(panel).toBeVisible();
-    expect(within(panel).getByText('Právní stav k 3. 10. 2026')).toBeInTheDocument();
+    expect(within(panel).getByText(/Období:/)).toBeInTheDocument();
     await user.click(toggle);
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
 
@@ -122,30 +122,7 @@ describe('OrderingQuiz', () => {
     await user.click(screen.getByRole('button', { name: 'Zkontrolovat pořadí' }));
     await user.keyboard('{Escape}');
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    expect(screen.getByText(quiz.items[0]!.amount.display)).toBeInTheDocument();
-  });
-
-  it('každý odkaz [n] v detailech vede na existující #zdroj-n', async () => {
-    const user = userEvent.setup();
-    saveState(quiz.id, {
-      v: 1,
-      order: solution,
-      locked: solution,
-      attempts: 1,
-      lastCheckedOrder: solution,
-      solved: true,
-      revealed: true,
-    });
-    const { container } = renderQuiz();
-    for (const item of quiz.items) {
-      await user.click(screen.getByRole('button', { name: new RegExp(item.title) }));
-    }
-    const refs = container.querySelectorAll<HTMLAnchorElement>('.card__panel a.source-ref');
-    expect(refs.length).toBeGreaterThan(50);
-    for (const a of refs) {
-      const id = a.getAttribute('href')!.slice(1);
-      expect(document.getElementById(id), id).not.toBeNull();
-    }
+    expect(screen.getByText(quiz.items.find((i) => i.id === solution[0])!.cost)).toBeInTheDocument();
   });
 
   it('„Zahrát znovu“ po potvrzení smaže postup a znovu zamíchá', async () => {
@@ -176,11 +153,12 @@ describe('OrderingQuiz', () => {
     renderQuiz();
     const sources = screen.getByRole('region', { name: 'Zdroje' });
     const groups = within(sources).getAllByRole('heading', { level: 3 }).map((h) => h.textContent);
-    expect(groups).toEqual([...quiz.items.map((i) => i.title), 'Politický kontext']);
+    const expected = [...quiz.items.map((i) => i.name)].sort((a, b) => a.localeCompare(b, 'cs'));
+    expected.push('Politický kontext');
+    expect(groups).toEqual(expected);
     const link = within(sources).getAllByRole('link')[0]!;
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-    expect(document.getElementById('zdroj-57')).not.toBeNull();
   });
 
   it('poškozený uložený stav vede k nové hře bez chyby', () => {
@@ -196,11 +174,11 @@ describe('OrderingQuiz', () => {
     saveState(quiz.id, { v: 1, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false });
     renderQuiz();
     await user.click(screen.getByRole('button', { name: 'Zkontrolovat pořadí' }));
-    const lockedTitle = quiz.items.find((i) => i.id === order[5])!.title;
+    const lockedTitle = quiz.items.find((i) => i.id === order[5])!.name;
     expect(screen.queryByRole('button', { name: `Přetáhnout kartu ${lockedTitle}` })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: `Posunout ${lockedTitle} výš` })).not.toBeInTheDocument();
     // Dvě volné karty jsou v slotech 0 a 1; ▼ u první je prohodí přes nic zamčeného.
-    const firstTitle = quiz.items.find((i) => i.id === order[0])!.title;
+    const firstTitle = quiz.items.find((i) => i.id === order[0])!.name;
     await act(async () => {
       await user.click(screen.getByRole('button', { name: `Posunout ${firstTitle} níž` }));
     });

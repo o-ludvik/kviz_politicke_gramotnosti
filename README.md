@@ -28,7 +28,7 @@ Data kvízu „Kolik to stálo stát?“ jsou v `quizzes/kolik-to-stalo/data.jso
 
 - `id`, `name`, `actors`, `shortDesc`, `longDesc`, `cost`, `index`, `sources`
 
-Správné pořadí určuje pole `index` (1 = nejdražší). `cost` se jen zobrazuje po vyřešení.
+Správné pořadí určuje `index`: číslo (`1` = nejdražší) nebo pole povolených pozic při remíze (např. `[4, 5]` u obou kauz se stejnou hodnotou). `cost` se jen zobrazuje po vyřešení.
 
 Meta kvízu (název, osa, `revealAmounts`, …) je v `quizzes/kolik-to-stalo/meta.json`. Vstupní bod složky je `index.ts`.
 

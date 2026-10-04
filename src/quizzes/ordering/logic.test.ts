@@ -6,6 +6,7 @@ import {
   countCorrect,
   isCorrectAt,
   moveAmongFree,
+  oneSolution,
   seededRng,
   shuffle,
   stepAmongFree,
@@ -13,23 +14,29 @@ import {
 } from './logic';
 
 const items: RankedItem[] = scandalsSchema.parse(data).map(({ id, index }) => ({ id, index }));
-const solution = [...items].sort((a, b) => a.index - b.index).map((i) => i.id);
+const solution = oneSolution(items);
 
 describe('isCorrectAt', () => {
-  it('karta patří jen do slotu index - 1', () => {
+  it('karta s jednou pozicí patří jen do svého slotu', () => {
     const covid = items.find((i) => i.id === 'covid-nakupy')!;
     expect(isCorrectAt(covid, 0)).toBe(true);
     expect(isCorrectAt(covid, 1)).toBe(false);
-    const bitcoin = items.find((i) => i.id === 'bitcoin')!;
-    expect(isCorrectAt(bitcoin, 9)).toBe(true);
-    expect(isCorrectAt(bitcoin, 6)).toBe(false);
   });
 
-  it('remízy už nejsou — každá kauza má unikátní slot', () => {
+  it('remíza [4, 5] přijme obě pořadí', () => {
+    const a = items.find((i) => i.id === 'capi-hnizdo')!;
+    const b = items.find((i) => i.id === 'dozimetr')!;
+    expect(a.index).toEqual([4, 5]);
+    expect(b.index).toEqual([4, 5]);
+    expect(isCorrectAt(a, 3)).toBe(true);
+    expect(isCorrectAt(a, 4)).toBe(true);
+    expect(isCorrectAt(b, 3)).toBe(true);
+    expect(isCorrectAt(b, 4)).toBe(true);
+
     expect(check(solution, new Set(), items).allCorrect).toBe(true);
     const swapped = [...solution];
-    [swapped[6], swapped[7]] = [swapped[7]!, swapped[6]!];
-    expect(check(swapped, new Set(), items).allCorrect).toBe(false);
+    [swapped[3], swapped[4]] = [swapped[4]!, swapped[3]!];
+    expect(check(swapped, new Set(), items).allCorrect).toBe(true);
   });
 });
 
@@ -112,7 +119,7 @@ describe('check', () => {
     [order[0], order[1]] = [order[1]!, order[0]!];
     const first = check(order, new Set(), items);
     expect(first.allCorrect).toBe(false);
-    expect(first.newlyLocked).toHaveLength(8);
+    expect(first.newlyLocked).toHaveLength(items.length - 2);
     expect(first.newlyLocked).not.toContain(order[0]);
 
     const locked = new Set(first.newlyLocked);

@@ -19,12 +19,12 @@ describe('domovská stránka', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Politická gramotnost' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Hrát' })).toHaveAttribute('href', '#/kviz/kolik-to-stalo');
     expect(screen.queryByText('Připravujeme')).not.toBeInTheDocument();
-    expect(await screen.findByText('10 kauz, asi 5 minut')).toBeInTheDocument();
+    expect(await screen.findByText(/\d+ kauz, asi 5 minut/)).toBeInTheDocument();
     expect(screen.getByText(/Údaje platí ke 3\. 10\. 2026\./)).toBeInTheDocument();
   });
 
   it('tlačítko dlaždice odpovídá uloženému stavu', () => {
-    const base = { v: 1 as const, order: ['a'], locked: [], attempts: 1, lastCheckedOrder: null };
+    const base = { v: 2 as const, order: ['a'], locked: [], attempts: 1, lastCheckedOrder: null };
     saveState('kolik-to-stalo', { ...base, solved: false, revealed: false });
     const { unmount } = render(<App />);
     expect(screen.getByRole('link', { name: 'Pokračovat' })).toBeInTheDocument();

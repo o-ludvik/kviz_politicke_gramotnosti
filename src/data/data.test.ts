@@ -12,11 +12,19 @@ describe('data kvízu „Kolik to stálo stát?“', () => {
     expect(() => orderingQuizSchema.parse({ ...meta, items })).not.toThrow();
   });
 
-  it('má přesně 10 položek s unikátními id a indexy 1..N', () => {
-    expect(quiz.items).toHaveLength(10);
-    expect(new Set(quiz.items.map((i) => i.id)).size).toBe(10);
-    expect(new Set(quiz.items.map((i) => i.index)).size).toBe(10);
-    expect([...quiz.items.map((i) => i.index)].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  it('má unikátní id a pokryté pozice 1..N', () => {
+    expect(new Set(quiz.items.map((i) => i.id)).size).toBe(quiz.items.length);
+    const covered = new Set(quiz.items.flatMap((i) => i.index));
+    expect([...covered].sort((a, b) => a - b)).toEqual(
+      Array.from({ length: quiz.items.length }, (_, i) => i + 1),
+    );
+  });
+
+  it('normalizuje číslo i pole indexů', () => {
+    const single = quiz.items.find((i) => i.id === 'covid-nakupy')!;
+    expect(single.index).toEqual([1]);
+    const tie = quiz.items.find((i) => i.id === 'dozimetr')!;
+    expect(tie.index).toEqual([4, 5]);
   });
 
   it('shortDesc neobsahuje částku', () => {
@@ -38,9 +46,5 @@ describe('data kvízu „Kolik to stálo stát?“', () => {
       for (const s of item.sources) expect(s.url.startsWith('https://')).toBe(true);
     }
     for (const s of quiz.contextSources) expect(s.url.startsWith('https://')).toBe(true);
-  });
-
-  it('záložní kauza eDálnice v datech není', () => {
-    expect(quiz.items.find((i) => i.id === 'edalnice')).toBeUndefined();
   });
 });

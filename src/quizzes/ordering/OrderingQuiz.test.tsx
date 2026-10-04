@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import data from '../../../quizzes/kolik-to-stalo/data.json';
 import meta from '../../../quizzes/kolik-to-stalo/meta.json';
 import { orderingQuizSchema, scandalsSchema } from '../../data/schema';
-import { seededRng } from './logic';
+import { oneSolution, seededRng } from './logic';
 import { OrderingQuiz } from './OrderingQuiz';
 import { loadState, saveState, storageKey } from './persistence';
 
@@ -14,7 +14,8 @@ vi.mock('canvas-confetti', () => {
 });
 
 const quiz = orderingQuizSchema.parse({ ...meta, items: scandalsSchema.parse(data) });
-const solution = [...quiz.items].sort((a, b) => a.index - b.index).map((i) => i.id);
+const solution = oneSolution(quiz.items);
+const n = quiz.items.length;
 
 function renderQuiz() {
   const onExit = vi.fn();
@@ -28,7 +29,7 @@ function amountTexts() {
 
 function presetSolvedOrder() {
   saveState(quiz.id, {
-    v: 1,
+    v: 2,
     order: solution,
     locked: [],
     attempts: 2,
@@ -43,18 +44,20 @@ describe('OrderingQuiz', () => {
     const { container } = renderQuiz();
     const html = container.innerHTML;
     for (const text of amountTexts()) expect(html).not.toContain(text);
-    expect(screen.getAllByRole('listitem').length).toBeGreaterThanOrEqual(10);
+    expect(screen.getAllByRole('listitem').length).toBeGreaterThanOrEqual(n);
   });
 
   it('ani po kontrole se zamčenými kartami se částky neukážou', async () => {
     const user = userEvent.setup();
     const order = [...solution];
     [order[0], order[1]] = [order[1]!, order[0]!];
-    saveState(quiz.id, { v: 1, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false });
+    saveState(quiz.id, { v: 2, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false });
     const { container } = renderQuiz();
     await user.click(screen.getByRole('button', { name: 'Zkontrolovat pořadí' }));
-    expect(screen.getByText('Správně máš 8 z 10. Zelené karty zůstanou na svém místě.')).toBeInTheDocument();
-    expect(screen.getAllByText('Správně')).toHaveLength(8);
+    expect(
+      screen.getByText(`Správně máš ${n - 2} z ${n}. Zelené karty zůstanou na svém místě.`),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText('Správně')).toHaveLength(n - 2);
     for (const text of amountTexts()) expect(container.innerHTML).not.toContain(text);
   });
 
@@ -90,7 +93,7 @@ describe('OrderingQuiz', () => {
 
     const dialog = screen.getByRole('dialog', { name: 'Gratulujeme!' });
     expect(dialog).toHaveAttribute('aria-modal', 'true');
-    expect(within(dialog).getByText('Všech 10 kauz máš ve správném pořadí.')).toBeInTheDocument();
+    expect(within(dialog).getByText(`Všech ${n} kauz máš ve správném pořadí.`)).toBeInTheDocument();
     expect(within(dialog).getByText('Počet kontrol: 3')).toBeInTheDocument();
     expect(document.activeElement).toBe(within(dialog).getByRole('heading', { name: 'Gratulujeme!' }));
 
@@ -101,7 +104,7 @@ describe('OrderingQuiz', () => {
     }
     expect(screen.getByText('Klikni na kauzu a přečti si, odkud částka pochází.')).toBeInTheDocument();
 
-    const toggle = screen.getByRole('button', { name: /Stoka/ });
+    const toggle = screen.getByRole('button', { name: /Čapí hnízdo/ });
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
     await user.click(toggle);
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
@@ -128,7 +131,7 @@ describe('OrderingQuiz', () => {
   it('„Zahrát znovu“ po potvrzení smaže postup a znovu zamíchá', async () => {
     const user = userEvent.setup();
     saveState(quiz.id, {
-      v: 1,
+      v: 2,
       order: solution,
       locked: solution,
       attempts: 4,
@@ -164,14 +167,14 @@ describe('OrderingQuiz', () => {
   it('poškozený uložený stav vede k nové hře bez chyby', () => {
     localStorage.setItem(storageKey(quiz.id), '{"v":1,"order":["x"]}');
     expect(() => renderQuiz()).not.toThrow();
-    expect(loadState(quiz.id)?.order).toHaveLength(10);
+    expect(loadState(quiz.id)?.order).toHaveLength(n);
   });
 
   it('zamčená karta nemá úchyt ani tlačítka posunu', async () => {
     const user = userEvent.setup();
     const order = [...solution];
     [order[0], order[1]] = [order[1]!, order[0]!];
-    saveState(quiz.id, { v: 1, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false });
+    saveState(quiz.id, { v: 2, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false });
     renderQuiz();
     await user.click(screen.getByRole('button', { name: 'Zkontrolovat pořadí' }));
     const lockedTitle = quiz.items.find((i) => i.id === order[5])!.name;

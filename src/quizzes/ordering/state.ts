@@ -25,7 +25,7 @@ export function initialState(saved: SavedState): GameState {
 }
 
 export function newGame(order: string[]): SavedState {
-  return { v: 1, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false };
+  return { v: 2, order, locked: [], attempts: 0, lastCheckedOrder: null, solved: false, revealed: false };
 }
 
 export function toSaved(s: GameState): SavedState {

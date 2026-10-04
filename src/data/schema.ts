@@ -12,6 +12,14 @@ export const scandalSourceSchema = z.object({
   date: z.string().optional(),
 });
 
+/** Jedna pozice nebo více povolených (remíza: např. [4, 5]). Vždy se normalizuje na pole. */
+export const indexSchema = z
+  .union([z.number().int().min(1), z.array(z.number().int().min(1)).min(1)])
+  .transform((v): number[] => {
+    const arr = Array.isArray(v) ? v : [v];
+    return [...new Set(arr)].sort((a, b) => a - b);
+  });
+
 export const scandalSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
@@ -19,29 +27,61 @@ export const scandalSchema = z.object({
   shortDesc: z.string().min(1),
   longDesc: z.string().min(1),
   cost: z.string().min(1),
-  index: z.number().int().min(1),
+  index: indexSchema,
   sources: z.array(scandalSourceSchema).min(1),
 });
+
+function indexKey(index: readonly number[]): string {
+  return index.join(',');
+}
 
 export const scandalsSchema = z
   .array(scandalSchema)
   .min(1)
   .superRefine((items, ctx) => {
     const ids = new Set<string>();
-    const indexes = new Set<number>();
     for (const item of items) {
       if (ids.has(item.id)) {
         ctx.addIssue({ code: 'custom', message: `duplicitní id: ${item.id}` });
       }
       ids.add(item.id);
-      if (indexes.has(item.index)) {
-        ctx.addIssue({ code: 'custom', message: `duplicitní index: ${item.index}` });
+      for (const p of item.index) {
+        if (p > items.length) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `${item.id}: index ${p} mimo 1..${items.length}`,
+          });
+        }
       }
-      indexes.add(item.index);
+    }
+
+    // Remízové skupiny: stejná sada pozic, velikost skupiny = počet pozic; pozice pokrývají 1..N.
+    const groups = new Map<string, { positions: number[]; count: number }>();
+    for (const item of items) {
+      const key = indexKey(item.index);
+      const g = groups.get(key);
+      if (g) g.count++;
+      else groups.set(key, { positions: [...item.index], count: 1 });
+    }
+
+    const covered = new Set<number>();
+    for (const [key, g] of groups) {
+      if (g.count !== g.positions.length) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `index [${key}]: ${g.count} kauz vs ${g.positions.length} pozic (musí sedět)`,
+        });
+      }
+      for (const p of g.positions) {
+        if (covered.has(p)) {
+          ctx.addIssue({ code: 'custom', message: `pozice ${p} je ve více neslučitelných skupinách` });
+        }
+        covered.add(p);
+      }
     }
     for (let i = 1; i <= items.length; i++) {
-      if (!indexes.has(i)) {
-        ctx.addIssue({ code: 'custom', message: `chybí index ${i}` });
+      if (!covered.has(i)) {
+        ctx.addIssue({ code: 'custom', message: `chybí pokrytí pozice ${i}` });
       }
     }
   });

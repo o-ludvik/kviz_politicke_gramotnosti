@@ -1,6 +1,11 @@
 // Čisté funkce herní logiky kvízu typu „řazení“.
 
-export type RankedItem = { id: string; index: number };
+/** `index` je 1-based seznam povolených pozic (jedna nebo víc při remíze). */
+export type RankedItem = { id: string; index: readonly number[] };
+
+export function primaryIndex(item: RankedItem): number {
+  return Math.min(...item.index);
+}
 
 export type Rng = () => number;
 
@@ -101,9 +106,9 @@ export function stepAmongFree(
   return moveAmongFree(order, locked, slot, target);
 }
 
-/** Karta je správně, když leží ve slotu `index - 1` (index je 1-based). */
+/** Karta je správně, když leží v některé z povolených pozic (`index` je 1-based). */
 export function isCorrectAt(item: RankedItem, slot: number): boolean {
-  return slot === item.index - 1;
+  return item.index.includes(slot + 1);
 }
 
 export function countCorrect(order: readonly string[], items: readonly RankedItem[]): number {
@@ -146,7 +151,23 @@ export function shuffle(items: readonly RankedItem[], rng: Rng): string[] {
     if (countCorrect(next, items) <= 1) return next;
   }
   // Pojistka: obrácené řešení (pro běžná data nikdy nenastane).
-  return [...items].sort((a, b) => b.index - a.index).map((i) => i.id);
+  return [...items].sort((a, b) => primaryIndex(b) - primaryIndex(a)).map((i) => i.id);
+}
+
+/** Jedno platné pořadí (u remíz bere nejnižší volnou povolenou pozici). */
+export function oneSolution(items: readonly RankedItem[]): string[] {
+  const sorted = [...items].sort(
+    (a, b) => primaryIndex(a) - primaryIndex(b) || a.id.localeCompare(b.id),
+  );
+  const result: string[] = new Array(items.length);
+  const used = new Set<number>();
+  for (const item of sorted) {
+    const slot = item.index.map((p) => p - 1).find((s) => !used.has(s));
+    if (slot === undefined) throw new Error(`no free slot for ${item.id}`);
+    used.add(slot);
+    result[slot] = item.id;
+  }
+  return result;
 }
 
 export function sameOrder(a: readonly string[] | null, b: readonly string[]): boolean {

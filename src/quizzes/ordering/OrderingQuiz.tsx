@@ -68,7 +68,7 @@ export function OrderingQuiz({ quiz, onExit, rng = Math.random }: Props) {
   const reducer = useMemo(() => makeReducer(items), [items]);
 
   const [state, dispatch] = useReducer(reducer, undefined, () =>
-    initialState(loadState(quiz.id, itemIds) ?? newGame(shuffle(items, rng))),
+    initialState(loadState(quiz.id, items) ?? newGame(shuffle(items, rng))),
   );
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [moveMessage, announceMove] = useAnnouncer();

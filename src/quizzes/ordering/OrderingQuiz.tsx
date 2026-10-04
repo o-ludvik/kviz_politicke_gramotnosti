@@ -63,7 +63,6 @@ function useAnnouncer() {
 
 export function OrderingQuiz({ quiz, onExit, rng = Math.random }: Props) {
   const items = quiz.items;
-  const itemIds = useMemo(() => items.map((i) => i.id), [items]);
   const byId = useMemo(() => new Map(items.map((i) => [i.id, i])), [items]);
   const reducer = useMemo(() => makeReducer(items), [items]);
 

@@ -1418,6 +1418,302 @@ button {
   font-weight: 600;
 }
 
+/* ---------- Kvíz ANO / SPOLU ---------- */
+
+.kdo-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: var(--space-5);
+}
+
+.kdo-stage {
+  width: min(100%, 40rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.kdo-stage--feedback {
+  width: min(100%, 44rem);
+}
+
+.kdo-progress {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.kdo-topic {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  cursor: grab;
+  touch-action: none;
+}
+
+.kdo-topic:active {
+  cursor: grabbing;
+}
+
+.kdo-topic__title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.kdo-topic__desc {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+  max-width: var(--measure);
+}
+
+.kdo-topic__hint {
+  margin: var(--space-4) 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.kdo-drops {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.kdo-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  aspect-ratio: 1;
+  padding: var(--space-4);
+  background: var(--sheet);
+  border: 2px dashed var(--rule);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.kdo-drop:hover,
+.kdo-drop:focus-visible {
+  border-color: var(--ink);
+  outline: none;
+}
+
+.kdo-drop--over {
+  border-style: solid;
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--sheet) 85%, var(--ink));
+}
+
+.kdo-drop__logo {
+  width: min(70%, 9rem);
+  height: auto;
+  max-height: 4.5rem;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.kdo-drop__label {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.kdo-drop__popis {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.kdo-panel {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.kdo-panel--correct {
+  border-color: var(--correct);
+}
+
+.kdo-panel--wrong {
+  border-color: var(--wrong);
+}
+
+.kdo-panel__header {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--rule);
+}
+
+.kdo-panel--correct .kdo-panel__header {
+  color: var(--correct);
+  background: var(--correct-tint);
+  border-bottom-color: var(--correct);
+}
+
+.kdo-panel--wrong .kdo-panel__header {
+  color: var(--wrong);
+  background: var(--wrong-tint);
+  border-bottom-color: var(--wrong);
+}
+
+.kdo-panel__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.kdo-panel__body p {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+  max-width: var(--measure);
+}
+
+.kdo-panel__meta {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.kdo-panel__truth {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.kdo-sources {
+  margin: var(--space-3) 0 0;
+  padding-left: 1.2rem;
+}
+
+.kdo-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.kdo-score {
+  width: min(100%, 40rem);
+}
+
+.kdo-score__body {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.kdo-score__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+
+.kdo-review__heading {
+  margin-top: var(--space-6);
+  font-family: var(--font-display);
+}
+
+.kdo-review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.kdo-review {
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.kdo-review--correct {
+  border-color: var(--correct);
+}
+
+.kdo-review--wrong {
+  border-color: var(--wrong);
+}
+
+.kdo-review__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.kdo-review__toggle {
+  display: flex;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.kdo-review__mark {
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.kdo-review--correct .kdo-review__mark {
+  color: var(--correct);
+}
+
+.kdo-review--wrong .kdo-review__mark {
+  color: var(--wrong);
+}
+
+.kdo-review__panel {
+  padding: 0 var(--space-4) var(--space-4);
+  font-family: var(--font-text);
+  font-size: var(--text-size);
+  line-height: var(--text-leading);
+}
+
+.kdo-review__panel p {
+  margin: 0 0 var(--space-3);
+  max-width: var(--measure);
+}
+
+.kdo-review__truth {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.kdo-review__truth--correct {
+  color: var(--correct);
+}
+
+.kdo-review__truth--wrong {
+  color: var(--wrong);
+}
+
+@media (max-width: 36rem) {
+  .kdo-drops {
+    grid-template-columns: 1fr;
+  }
+
+  .kdo-drop {
+    aspect-ratio: auto;
+    min-height: 8rem;
+  }
+}
+
 /* ---------- Omezený pohyb ---------- */
 
 @media (prefers-reduced-motion: reduce) {

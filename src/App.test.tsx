@@ -25,9 +25,14 @@ describe('domovská stránka', () => {
       'href',
       '#/kviz/politicke-sliby',
     );
+    expect(screen.getByRole('link', { name: 'Hrát', description: 'ANO, nebo SPOLU?' })).toHaveAttribute(
+      'href',
+      '#/kviz/kdo-to-udelal',
+    );
     expect(screen.queryByText('Připravujeme')).not.toBeInTheDocument();
     expect(await screen.findByText(/\d+ kauz, asi 5 minut/)).toBeInTheDocument();
     expect(await screen.findByText(/\d+ slibů, asi 8 minut/)).toBeInTheDocument();
+    expect(await screen.findByText(/\d+ témat, asi 6 minut/)).toBeInTheDocument();
     expect(screen.getByText(/Údaje platí ke 3\. 10\. 2026\./)).toBeInTheDocument();
   });
 

@@ -162,4 +162,61 @@ export type OrderingQuiz = z.infer<typeof orderingQuizSchema>;
 export type PromisePhoto = z.infer<typeof promisePhotoSchema>;
 export type PromiseItem = z.infer<typeof promiseItemSchema>;
 export type PromisesQuiz = z.infer<typeof promisesQuizSchema>;
-export type AnyQuiz = OrderingQuiz | PromisesQuiz;
+
+export const kdoSourceSchema = z.object({
+  title: z.string().min(1),
+  url: z.string().startsWith('https://'),
+});
+
+export const kdoItemSchema = z.object({
+  id: z.string().min(1),
+  nazev: z.string().min(1),
+  vlada: z.enum(['ano', 'spolu']),
+  datum: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  kratky_popis: z.string().min(1),
+  dlouhy_popis: z.string().min(1),
+  kdo: z.string().min(1),
+  zdroje: z.array(kdoSourceSchema).min(1),
+});
+
+export const kdoItemsSchema = z
+  .array(kdoItemSchema)
+  .min(1)
+  .superRefine((items, ctx) => {
+    const ids = new Set<string>();
+    for (const item of items) {
+      if (ids.has(item.id)) {
+        ctx.addIssue({ code: 'custom', message: `duplicitní id: ${item.id}` });
+      }
+      ids.add(item.id);
+    }
+  });
+
+export const kdoVladaSchema = z.object({
+  id: z.enum(['ano', 'spolu']),
+  label: z.string().min(1),
+  popis: z.string().min(1),
+  obrazek: z.string().min(1),
+  obrazekUrl: z.string().min(1),
+  atribuce: z.string().min(1),
+  stranka_souboru: z.string().startsWith('https://'),
+});
+
+export const kdoQuizSchema = z.object({
+  id: z.string().min(1),
+  type: z.literal('kdo'),
+  title: z.string().min(1),
+  shortDescription: z.string().min(1),
+  estimatedMinutes: z.number().positive(),
+  dataAsOf: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  methodology: z.string().min(1),
+  items: kdoItemsSchema,
+  vlady: z.tuple([kdoVladaSchema, kdoVladaSchema]),
+  contextSources: z.array(scandalSourceSchema).default([]),
+});
+
+export type KdoSource = z.infer<typeof kdoSourceSchema>;
+export type KdoItem = z.infer<typeof kdoItemSchema>;
+export type KdoVlada = z.infer<typeof kdoVladaSchema>;
+export type KdoQuiz = z.infer<typeof kdoQuizSchema>;
+export type AnyQuiz = OrderingQuiz | PromisesQuiz | KdoQuiz;

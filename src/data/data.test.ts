@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
+import kdoModule from '../../quizzes/kdo-to-udelal/index';
 import orderingData from '../../quizzes/kolik-to-stalo/data.json';
 import orderingMeta from '../../quizzes/kolik-to-stalo/meta.json';
 import promisesModule from '../../quizzes/politicke-sliby/index';
 import {
+  kdoQuizSchema,
   orderingQuizSchema,
   promisesQuizSchema,
   scandalsSchema,
+  type KdoQuiz,
   type PromisesQuiz,
 } from './schema';
 
@@ -85,5 +88,44 @@ describe('data kvízu „Splnil, nebo nesplnil?“', () => {
       for (const s of item.zdroje) expect(s.url.startsWith('https://')).toBe(true);
     }
     for (const s of quiz.contextSources) expect(s.url.startsWith('https://')).toBe(true);
+  });
+});
+
+describe('data kvízu „ANO, nebo SPOLU?“', () => {
+  let kdoQuiz: KdoQuiz;
+
+  it('projdou schématem včetně log vlád', async () => {
+    kdoQuiz = kdoQuizSchema.parse(await kdoModule.load());
+    expect(kdoQuiz.items).toHaveLength(10);
+    expect(kdoQuiz.vlady).toHaveLength(2);
+  });
+
+  it('má unikátní id a jen vlady ano/spolu', async () => {
+    const quiz = kdoQuiz ?? kdoQuizSchema.parse(await kdoModule.load());
+    expect(new Set(quiz.items.map((i) => i.id)).size).toBe(10);
+    for (const item of quiz.items) {
+      expect(['ano', 'spolu']).toContain(item.vlada);
+      expect(item.kratky_popis.trim()).not.toBe('');
+      expect(item.dlouhy_popis.trim()).not.toBe('');
+      expect(item.kdo.trim()).not.toBe('');
+      expect(item.zdroje.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('má vyvážené přiřazení 5× ano a 5× spolu', async () => {
+    const quiz = kdoQuiz ?? kdoQuizSchema.parse(await kdoModule.load());
+    expect(quiz.items.filter((i) => i.vlada === 'ano')).toHaveLength(5);
+    expect(quiz.items.filter((i) => i.vlada === 'spolu')).toHaveLength(5);
+  });
+
+  it('všechny URL zdrojů začínají https://', async () => {
+    const quiz = kdoQuiz ?? kdoQuizSchema.parse(await kdoModule.load());
+    for (const item of quiz.items) {
+      for (const s of item.zdroje) expect(s.url.startsWith('https://')).toBe(true);
+    }
+    for (const v of quiz.vlady) {
+      expect(v.obrazekUrl.length).toBeGreaterThan(0);
+      expect(v.stranka_souboru.startsWith('https://')).toBe(true);
+    }
   });
 });

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ano",
+    "label": "ANO",
+    "popis": "Vláda Andreje Babiše",
+    "obrazek": "ano.svg",
+    "atribuce": "Logo ANO 2011, via Wikimedia Commons (PD textlogo)",
+    "stranka_souboru": "https://commons.wikimedia.org/wiki/File:ANO_Logo.svg"
+  },
+  {
+    "id": "spolu",
+    "label": "SPOLU",
+    "popis": "Vláda Petra Fialy (ODS, KDU-ČSL, TOP 09)",
+    "obrazek": "spolu.svg",
+    "atribuce": "Logo SPOLU, via Wikimedia Commons",
+    "stranka_souboru": "https://commons.wikimedia.org/wiki/File:SPOLU_logo.svg"
+  }
+]

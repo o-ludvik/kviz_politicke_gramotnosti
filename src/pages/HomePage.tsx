@@ -1,10 +1,23 @@
 import { useEffect, useState } from 'react';
 import { t } from '../copy';
+import { quizProgress as kdoProgress } from '../quizzes/kdo/persistence';
 import { quizProgress as orderingProgress } from '../quizzes/ordering/persistence';
 import { quizProgress as promisesProgress } from '../quizzes/promises/persistence';
 import { registry, type QuizRegistryEntry } from '../quizzes/registry';
 
 type Meta = { count: number; minutes: number };
+
+function progressOf(entry: QuizRegistryEntry) {
+  if (entry.type === 'promises') return promisesProgress(entry.id);
+  if (entry.type === 'kdo') return kdoProgress(entry.id);
+  return orderingProgress(entry.id);
+}
+
+function metaLabel(entry: QuizRegistryEntry, meta: Meta): string {
+  if (entry.type === 'promises') return t('home.card.meta.promises', { n: meta.count, m: meta.minutes });
+  if (entry.type === 'kdo') return t('home.card.meta.kdo', { n: meta.count, m: meta.minutes });
+  return t('home.card.meta', { n: meta.count, m: meta.minutes });
+}
 
 export function HomePage() {
   return (
@@ -39,19 +52,14 @@ function QuizTile({ entry }: { entry: QuizRegistryEntry }) {
   }, [entry]);
 
   const titleId = `tile-${entry.id}`;
-  const progress =
-    entry.type === 'promises' ? promisesProgress(entry.id) : orderingProgress(entry.id);
+  const progress = progressOf(entry);
   const label =
     progress === 'solved'
       ? t('home.card.again')
       : progress === 'inProgress'
         ? t('home.card.resume')
         : t('home.card.start');
-  const metaText = meta
-    ? entry.type === 'promises'
-      ? t('home.card.meta.promises', { n: meta.count, m: meta.minutes })
-      : t('home.card.meta', { n: meta.count, m: meta.minutes })
-    : ' ';
+  const metaText = meta ? metaLabel(entry, meta) : ' ';
 
   return (
     <article className="tile" aria-labelledby={titleId}>

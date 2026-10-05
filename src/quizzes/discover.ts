@@ -3,7 +3,7 @@ import type { QuizModule } from './types';
 
 export type QuizRegistryEntry = {
   id: string;
-  type: 'ordering' | 'promises';
+  type: 'ordering' | 'promises' | 'kdo';
   title: string;
   shortDescription: string;
   load: () => Promise<AnyQuiz>;

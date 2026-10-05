@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { AnyQuiz } from '../data/schema';
+import { KdoQuiz } from '../quizzes/kdo/KdoQuiz';
 import { OrderingQuiz } from '../quizzes/ordering/OrderingQuiz';
 import { PromisesQuiz } from '../quizzes/promises/PromisesQuiz';
 import { findQuiz } from '../quizzes/registry';
@@ -39,5 +40,7 @@ export function QuizPage({ quizId }: { quizId: string }) {
       return <OrderingQuiz quiz={state.quiz} onExit={() => navigate('/')} />;
     case 'promises':
       return <PromisesQuiz quiz={state.quiz} onExit={() => navigate('/')} />;
+    case 'kdo':
+      return <KdoQuiz quiz={state.quiz} onExit={() => navigate('/')} />;
   }
 }
